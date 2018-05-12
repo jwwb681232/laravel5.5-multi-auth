@@ -10,14 +10,24 @@ class AdminLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:admin');
+        $this->middleware('guest:admin',['except'=>['logout']]);
     }
 
+    /**
+     * show admin login form
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showLoginForm()
     {
         return view('auth.admin-login');
     }
 
+    /**
+     * admin login action
+     * @param Request $request
+     *
+     * @return $this|\Illuminate\Http\RedirectResponse
+     */
     public function login(Request $request)
     {
         $this->validate(
@@ -41,5 +51,16 @@ class AdminLoginController extends Controller
         }
 
         return redirect()->back()->withInput($request->only('email', 'remember'));
+    }
+
+    /**
+     * admin logout action
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
+        auth('admin')->logout();
+
+        return redirect('/');
     }
 }
