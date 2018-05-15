@@ -5,7 +5,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>Color Admin | Login Page</title>
+    <title>{{ env('APP_NAME') }} | Login Page</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -26,6 +26,11 @@
     <script src="{{ asset('resources/plugins/pace/pace.min.js') }}"></script>
     <!-- ================== END BASE JS ================== -->
 </head>
+<style>
+    .parsley-errors-list{
+        color: #F44336;
+    }
+</style>
 <body class="pace-top">
 <!-- begin #page-loader -->
 <div id="page-loader">
@@ -39,7 +44,7 @@
 <!-- end #page-loader -->
 
 <div class="login-cover">
-    <div class="login-cover-image"><img src="{{ asset('resources/img/login-bg/bg-1.jpg') }}" data-id="login-cover-image" alt="" /></div>
+    <div class="login-cover-image"><img src="{{ asset('resources/img/login-bg/bg-5.jpg') }}" data-id="login-cover-image" alt="" /></div>
     <div class="login-cover-bg"></div>
 </div>
 <!-- begin #page-container -->
@@ -49,8 +54,8 @@
         <!-- begin brand -->
         <div class="login-header">
             <div class="brand">
-                <span class="logo"></span> Color Admin
-                <small>responsive bootstrap admin template</small>
+                <span class="logo"></span> {{ env('APP_NAME') }}
+                <small>material design backend management system</small>
             </div>
             <div class="icon">
                 <i class="material-icons">lock</i>
@@ -58,23 +63,26 @@
         </div>
         <!-- end brand -->
         <div class="login-content">
-            <form action="index.html" method="POST" class="margin-bottom-0">
+            <form action="{{ route('admin.login.submit') }}" method="POST" class="margin-bottom-0" data-parsley-validate="true">
+                {{ csrf_field() }}
                 <div class="form-group m-b-20">
-                    <input type="text" class="form-control input-lg" placeholder="Email Address" />
+                    <input name="email" type="email" class="form-control input-lg" value="{{ old('email') }}" placeholder="Email Address" required/>
+                    @if($errors->has('email'))<ul class="parsley-errors-list filled"><li>{{ $errors->first('email') }}</li></ul>@endif
                 </div>
                 <div class="form-group m-b-20">
-                    <input type="text" class="form-control input-lg" placeholder="Password" />
+                    <input name="password" type="password" class="form-control input-lg" placeholder="Password" minlength="6" maxlength="24" required/>
+                    @if($errors->has('password'))<ul class="parsley-errors-list filled"><li>{{ $errors->first('password') }}</li></ul>@endif
                 </div>
                 <div class="checkbox m-b-20">
                     <label>
-                        <input type="checkbox" /> Remember Me
+                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                     </label>
                 </div>
                 <div class="login-buttons">
                     <button type="submit" class="btn btn-info btn-block btn-lg">Sign me in</button>
                 </div>
                 <div class="m-t-20">
-                    Not a member yet? Click <a href="#">here</a> to register.
+                    <a href="{{ route('admin.password.request') }}">Forgot Password</a>
                 </div>
             </form>
         </div>
@@ -82,11 +90,7 @@
     <!-- end login -->
 
     <ul class="login-bg-list">
-        <li class="active"><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-1.jpg') }}" alt="" /></a></li>
-        <li><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-2.jpg') }}" alt="" /></a></li>
-        <li><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-3.jpg') }}" alt="" /></a></li>
-        <li><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-4.jpg') }}" alt="" /></a></li>
-        <li><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-5.jpg') }}" alt="" /></a></li>
+        <li class="active"><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-5.jpg') }}" alt="" /></a></li>
         <li><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-6.jpg') }}" alt="" /></a></li>
     </ul>
 
@@ -96,11 +100,7 @@
         <div class="theme-panel-content">
             <h5 class="m-t-0">Color Theme</h5>
             <ul class="theme-list clearfix">
-                <li class="active"><a href="javascript:;" class="bg-cyan" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default/Cyan">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                <li class="active"><a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
                 <li><a href="javascript:;" class="bg-black" data-theme="black" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
             </ul>
             <div class="divider"></div>
@@ -175,6 +175,7 @@
 <!-- ================== END BASE JS ================== -->
 
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+<script src="{{ asset('resources/plugins/parsley/dist/parsley.min.js') }}"></script>
 <script src="{{ asset('resources/js/login-v2.demo.min.js') }}"></script>
 <script src="{{ asset('resources/js/apps.min.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
