@@ -90,8 +90,8 @@
     <!-- end login -->
 
     <ul class="login-bg-list">
-        <li class="active"><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-5.jpg') }}" alt="" /></a></li>
-        <li><a href="#" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-6.jpg') }}" alt="" /></a></li>
+        <li class="active"><a href="javascript:void (0)" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-5.jpg') }}" alt="" /></a></li>
+        <li><a href="javascript:void (0)" data-click="change-bg"><img src="{{ asset('resources/img/login-bg/bg-6.jpg') }}" alt="" /></a></li>
     </ul>
 
     <!-- begin theme-panel -->
