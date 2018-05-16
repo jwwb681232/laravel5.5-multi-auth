@@ -5,12 +5,22 @@ namespace App;
 use App\Notifications\AdminResetPasswordNotification;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-
+use Spatie\Permission\Traits\HasRoles;
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable,HasRoles;
 
+    /**
+     * auth
+     * @var string
+     */
     protected $guard = 'admin';
+
+    /**
+     * permission
+     * @var string
+     */
+    protected $guard_name = 'web_admin';
 
     /**
      * The attributes that are mass assignable.

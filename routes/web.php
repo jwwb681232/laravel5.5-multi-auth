@@ -19,15 +19,25 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::prefix('admin')->group(function(){
-    Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
-    Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
+Route::prefix('admin')->group(function($route){
+    //region 登录退出
+    $route->get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
+    $route->post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
+    $route->get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
+    //endregion
 
-    Route::post('/password/email','Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-    Route::get('/password/reset','Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-    Route::post('/password/reset','Auth\AdminResetPasswordController@reset');
-    Route::get('/password/reset/{token}','Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+    //region 重置密码
+    $route->post('/password/email','Auth\AdminForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+    $route->get('/password/reset','Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+    $route->post('/password/reset','Auth\AdminResetPasswordController@reset');
+    $route->get('/password/reset/{token}','Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+    //endregion
+});
+
+Route::group(['middleware' => 'auth:admin','prefix'=>'admin'],function($route){
+    //仪表盘
+    $route->get('/', 'AdminController@index')->name('admin.dashboard');
+    //测试
+    $route->get('test', 'AdminController@test');
 });
 
