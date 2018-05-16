@@ -5,16 +5,23 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
+use Illuminate\Validation\ValidationException;
 
 class AdminLoginController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('guest:admin',['except'=>['logout']]);
+        $this->middleware('guest:admin', ['except' => ['logout']]);
+    }
+
+    protected function username()
+    {
+        return 'email';
     }
 
     /**
      * show admin login form
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showLoginForm()
@@ -24,13 +31,14 @@ class AdminLoginController extends Controller
 
     /**
      * admin login action
+     *
      * @param Request $request
      *
      * @return $this|\Illuminate\Http\RedirectResponse
      */
     public function login(Request $request)
     {
-        $this->validate(
+        $valid = $this->validate(
             $request,
             [
                 'email'    => 'required|email',
@@ -50,11 +58,16 @@ class AdminLoginController extends Controller
             return redirect()->intended(route('admin.dashboard'));
         }
 
-        return redirect()->back()->withInput($request->only('email', 'remember'));
+        throw ValidationException::withMessages(
+            [$this->username() => [trans('auth.failed')]]
+        );
+
+        //return redirect()->back()->withInput($request->only('email', 'remember'));
     }
 
     /**
      * admin logout action
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function logout()

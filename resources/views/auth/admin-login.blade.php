@@ -5,7 +5,7 @@
 <!--<![endif]-->
 <head>
     <meta charset="utf-8" />
-    <title>{{ env('APP_NAME') }} | Login Page</title>
+    <title>{{ config('app.name') }} | Login Page</title>
     <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
