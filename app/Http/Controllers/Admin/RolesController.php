@@ -46,7 +46,7 @@ class RolesController extends Controller
                 'data' => $roles,
             ]);
         }
-        return view('roles.index', compact('roles'));
+        return view('admin.roles.index', compact('roles'));
     }
 
     /**
