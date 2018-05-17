@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AdminRequest;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AdminController extends Controller
 {
@@ -16,8 +19,9 @@ class AdminController extends Controller
         return view('admin.dashboard.index');
     }
 
-    public function test()
+    public function test(AdminRequest $request)
     {
-
+        /*$role = Role::create(['name'=>'editor']);
+        $permission = Permission::create(['name'=>'edit article']);*/
     }
 }

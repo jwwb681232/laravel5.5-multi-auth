@@ -17,12 +17,6 @@ class Admin extends Authenticatable
     protected $guard = 'admin';
 
     /**
-     * permission
-     * @var string
-     */
-    protected $guard_name = 'web_admin';
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
