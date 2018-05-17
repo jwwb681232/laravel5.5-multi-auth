@@ -34,10 +34,12 @@ Route::prefix('admin')->group(function($route){
     //endregion
 });
 
-Route::group(['middleware' => 'auth:admin','prefix'=>'admin'],function($route){
+Route::group(['middleware' => 'auth:admin','prefix'=>'admin','namespace'=>'Admin'],function($route){
     //仪表盘
     $route->get('/', 'AdminController@index')->name('admin.dashboard');
     //测试
     $route->get('test', 'AdminController@test');
+    //角色
+    $route->resource('roles', 'RolesController');
 });
 

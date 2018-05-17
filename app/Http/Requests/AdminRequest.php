@@ -25,11 +25,11 @@ class AdminRequest extends FormRequest
     {
         $function = last(explode('/', $this->path())).'Valid';
         if (method_exists(self::class, $function)) {
-            if ( ! is_array($this->{$function})) {
+            if ( ! is_array($this->$function())) {
                 return [];
             }
 
-            return $this->{$function};
+            return $this->$function();
         }
 
         return [];
@@ -39,7 +39,7 @@ class AdminRequest extends FormRequest
     public function testValid()
     {
         return [
-            'a' => 'required',
+            't' => 'required',
         ];
     }
 

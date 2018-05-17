@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\AdminRequest;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -19,8 +18,11 @@ class AdminController extends Controller
         return view('admin.dashboard.index');
     }
 
-    public function test(AdminRequest $request)
+    public function test()
     {
+        /*echo '<pre>';
+        print_r(123);
+        die;*/
         /*$role = Role::create(['name'=>'editor']);
         $permission = Permission::create(['name'=>'edit article']);*/
     }
