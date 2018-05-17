@@ -4,15 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Criteria\RoleCriteria;
 use App\Presenters\RolePresenter;
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Http\Requests\RoleCreateRequest;
-use App\Http\Requests\RoleUpdateRequest;
 use App\Repositories\RoleRepository;
-use App\Validators\RoleValidator;
 
 /**
  * Class RolesController.
@@ -27,20 +21,13 @@ class RolesController extends Controller
     protected $repository;
 
     /**
-     * @var RoleValidator
-     */
-    protected $validator;
-
-    /**
      * RolesController constructor.
      *
      * @param RoleRepository $repository
-     * @param RoleValidator $validator
      */
-    public function __construct(RoleRepository $repository, RoleValidator $validator)
+    public function __construct(RoleRepository $repository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
     }
 
     /**
@@ -59,9 +46,6 @@ class RolesController extends Controller
                 'data' => $roles,
             ]);
         }
-        echo '<pre>';
-        print_r($roles);
-        die;
         return view('roles.index', compact('roles'));
     }
 
