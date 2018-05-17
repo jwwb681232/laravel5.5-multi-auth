@@ -22,7 +22,7 @@ class RoleTransformer extends TransformerAbstract
     public function transform(Role $model)
     {
         return [
-            'id'         => (int) $model->id,
+            'role_id'         => (int) $model->id,
 
             /* place your other model properties here */
 

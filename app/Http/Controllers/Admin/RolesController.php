@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Criteria\RoleCriteria;
+use App\Presenters\RolePresenter;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -44,23 +45,23 @@ class RolesController extends Controller
 
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index()
     {
         $this->repository->pushCriteria(RoleCriteria::class);
+        $this->repository->setPresenter(RolePresenter::class);
         $roles = $this->repository->all();
-        echo '<pre>';
-        print_r($roles->toArray());
-        die;
         if (request()->wantsJson()) {
 
             return response()->json([
                 'data' => $roles,
             ]);
         }
-
+        echo '<pre>';
+        print_r($roles);
+        die;
         return view('roles.index', compact('roles'));
     }
 
