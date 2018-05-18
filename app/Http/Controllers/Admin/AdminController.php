@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
+use App\Criteria\AdminUserCriteria;
 use App\Presenters\AdminUserPresenter;
 use App\Repositories\AdminUserRepository;
 use Illuminate\Http\Request;
@@ -20,11 +21,12 @@ class AdminController extends Controller
 
     /**
      * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function index()
     {
+        $this->repository->pushCriteria(AdminUserCriteria::class);
         $this->repository->setPresenter(AdminUserPresenter::class);
         $adminUsers = $this->repository->all();
         if (request()->wantsJson()) {
