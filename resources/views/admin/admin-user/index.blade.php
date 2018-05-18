@@ -587,6 +587,8 @@
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <script src="{{ asset('resources/js/apps.min.js') }}"></script>
 <script src="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/table-export/tableExport.min.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>
@@ -599,7 +601,7 @@
             //height:tableHeight(),//高度调整
             toolbar: '#toolbar',//指定工具栏
             striped: true, //是否显示行间隔色
-            dataField: "res",//bootstrap table 可以前端分页也可以后端分页，这里
+            dataField: "data",//bootstrap table 可以前端分页也可以后端分页，这里
             //我们使用的是后端分页，后端分页时需返回含有total：总记录数,这个键值好像是固定的
             //rows： 记录集合 键值可以修改  dataField 自己定义成自己想要的就好
             pageNumber: 1, //初始化加载第一页，默认第一页
@@ -615,6 +617,8 @@
             toolbarAlign:'right',//工具栏对齐方式
             buttonsAlign:'right',//按钮对齐方式
             //toolbar:'#toolbar',//指定工作栏
+            showExport:true,
+            exportDataType:'selected',
             columns:[
             {
                 title:'全选',

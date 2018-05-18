@@ -4,14 +4,14 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
-use App\Entities\Role;
+use App\Admin;
 
 /**
  * Class RoleRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class RoleRepository extends BaseRepository
+class AdminUserRepository extends BaseRepository
 {
     /**
      * Specify Model class name
@@ -20,7 +20,7 @@ class RoleRepository extends BaseRepository
      */
     public function model()
     {
-        return Role::class;
+        return Admin::class;
     }
 
     /**
