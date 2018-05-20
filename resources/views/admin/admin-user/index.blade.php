@@ -633,6 +633,7 @@
             //height:tableHeight(),//高度调整
             toolbar: '#toolbar',//指定工具栏
             striped: true, //是否显示行间隔色
+            sortable:true,
             dataField: "data",//bootstrap table 可以前端分页也可以后端分页，这里
             pageNumber: 1, //初始化加载第一页，默认第一页
             pagination: true,//是否分页
@@ -644,10 +645,11 @@
             //     };
             // },//请求服务器时所传的参数
             sidePagination: 'server',//指定服务器端分页
-            pageSize: 2,//单页记录数
-            pageList: [2, 10, 20, 30],//分页步进值
+            pageSize: 10,//单页记录数
+            pageList: [10, 20, 30],//分页步进值
             showRefresh: true,//刷新按钮
             showColumns: true,
+            search:true,
             clickToSelect: true,//是否启用点击选中行
             toolbarAlign: 'right',//工具栏对齐方式
             buttonsAlign: 'right',//按钮对齐方式

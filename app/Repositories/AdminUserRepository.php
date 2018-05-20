@@ -46,11 +46,12 @@ class AdminUserRepository extends BaseRepository
         $this->applyCriteria();
         $condition = $this->model;
 
+        $data['total'] = $condition->count();
+
         $data['data'] = $this->parserResult(
             $condition->offset($request->get('offset'))->limit($request->get('limit'))->get()
         );
 
-        $data['total'] = $condition->count();
 
         return $data;
     }

@@ -21,7 +21,9 @@ class AdminController extends Controller
 
     /**
      * Show the application dashboard.
+     *
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
