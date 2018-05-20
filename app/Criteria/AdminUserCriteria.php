@@ -27,7 +27,7 @@ class AdminUserCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        //$model = $model->where('name','super_admin');
+        $model = $model->where('name','super_admin');
         return $model;
     }
 }

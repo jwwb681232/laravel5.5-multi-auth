@@ -28,10 +28,10 @@ class AdminController extends Controller
     {
         if (request()->wantsJson()) {
             $this->repository->pushCriteria(AdminUserCriteria::class);
-            $adminUsers = $this->repository->search(request());
             $this->repository->setPresenter(AdminUserPresenter::class);
+            $adminUsers = $this->repository->search(\request());
             return response()->json(
-                ['data'=>$adminUsers]
+                $adminUsers
             );
         }
 

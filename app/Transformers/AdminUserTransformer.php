@@ -32,7 +32,7 @@ class AdminUserTransformer extends TransformerAbstract
             'name'       => (string)$model->name,
             'email'      => (string)$model->email,
             'job_title'  => (string)$model->job_title,
-            'created_at' => (string)$model->created_at->toDateTimeString(),
+            'created_at' => (string)$model->created_at->timestamp,
             'updated_at' => (string)$model->updated_at->toDateTimeString(),
         ];
     }

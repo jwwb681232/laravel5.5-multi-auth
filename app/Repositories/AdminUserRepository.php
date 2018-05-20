@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Criteria\AdminUserCriteria;
 use Illuminate\Http\Request;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -26,6 +27,7 @@ class AdminUserRepository extends BaseRepository
 
     /**
      * Boot up the repository, pushing criteria
+     *
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function boot()
@@ -35,7 +37,16 @@ class AdminUserRepository extends BaseRepository
 
     public function search(Request $request)
     {
-        return $this->model->offset($request->get('offset'))->limit($request->get('limit'))->get();
+        //$condition = $this->model;
+        $condition = $this->pushCriteria(AdminUserCriteria::class);
+
+        $data['data'] = $this->parserResult(
+            $condition->offset($request->get('offset'))->limit($request->get('limit'))->get()
+        );
+
+        $data['total'] = $condition->count();
+
+        return $data;
     }
-    
+
 }
