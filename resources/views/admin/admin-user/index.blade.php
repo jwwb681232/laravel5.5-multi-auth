@@ -501,6 +501,20 @@
                         <h4 class="panel-title">Panel Title here</h4>
                     </div>
                     <div class="panel-body">
+                        <div id="toolbar" class="btn-group">
+                            <button id="btn_add" type="button" class="btn btn-success" onclick="addVideoShow();">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                            </button>
+                            <button id="btn_delete" type="button" class="btn btn-default" onclick="batchUploadShow();">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>批量上传
+                            </button>
+                            <button id="btn_edit" type="button" class="btn btn-default" onclick="editMemberInfoShow();">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>选择修改
+                            </button>
+                            <button id="btn_delete" type="button" class="btn btn-default" onclick="delMemberVideo();">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>选择删除
+                            </button>
+                        </div>
                         <table id="data-table" class="table table-hover"></table>
                     </div>
                 </div>
@@ -651,7 +665,7 @@
             showColumns: true,
             search:true,
             clickToSelect: true,//是否启用点击选中行
-            toolbarAlign: 'right',//工具栏对齐方式
+            toolbarAlign: 'left',//工具栏对齐方式
             buttonsAlign: 'right',//按钮对齐方式
             //toolbar:'#toolbar',//指定工作栏
             showExport: true,
