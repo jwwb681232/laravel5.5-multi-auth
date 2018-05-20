@@ -26,15 +26,12 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $this->repository->pushCriteria(AdminUserCriteria::class);
-        $this->repository->setPresenter(AdminUserPresenter::class);
-        $adminUsers = $this->repository->all();
         if (request()->wantsJson()) {
-
+            $this->repository->pushCriteria(AdminUserCriteria::class);
+            $adminUsers = $this->repository->search(request());
+            $this->repository->setPresenter(AdminUserPresenter::class);
             return response()->json(
-                [
-                    'data'=>$adminUsers,
-                ]
+                ['data'=>$adminUsers]
             );
         }
 

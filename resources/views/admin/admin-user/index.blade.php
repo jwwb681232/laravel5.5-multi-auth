@@ -637,10 +637,15 @@
             pageNumber: 1, //初始化加载第一页，默认第一页
             pagination: true,//是否分页
             queryParamsType: 'limit',//查询参数组织方式
-            //queryParams:queryParams,//请求服务器时所传的参数
+            // queryParams:	function(params) {
+            //     return {
+            //         page:params.pageNumber,
+            //         limit:params.pageSize
+            //     };
+            // },//请求服务器时所传的参数
             sidePagination: 'server',//指定服务器端分页
-            pageSize: 10,//单页记录数
-            pageList: [5, 10, 20, 30],//分页步进值
+            pageSize: 2,//单页记录数
+            pageList: [2, 10, 20, 30],//分页步进值
             showRefresh: true,//刷新按钮
             showColumns: true,
             clickToSelect: true,//是否启用点击选中行

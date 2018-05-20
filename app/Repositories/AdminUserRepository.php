@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use Illuminate\Http\Request;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Admin;
@@ -30,6 +31,11 @@ class AdminUserRepository extends BaseRepository
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
+    }
+
+    public function search(Request $request)
+    {
+        return $this->model->offset($request->get('offset'))->limit($request->get('limit'))->get();
     }
     
 }

@@ -34,8 +34,8 @@ return [
         'params'     => [
             'include' => 'include'
         ],
-        //'serializer' => League\Fractal\Serializer\ArraySerializer::class
-        'serializer' => App\Serializer\MorphSerializer::class
+        'serializer' => League\Fractal\Serializer\ArraySerializer::class
+        //'serializer' => App\Serializer\MorphSerializer::class
     ],
 
     /*
