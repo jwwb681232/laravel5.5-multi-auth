@@ -669,7 +669,8 @@
                 {
                     title: 'id',
                     field: 'id',
-                    visible: true
+                    visible: true,
+                    sortable: true
                 },
                 {
                     title: 'Name',

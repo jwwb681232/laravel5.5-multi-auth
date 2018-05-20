@@ -27,9 +27,22 @@ class AdminUserCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        $keyword = request('search');
+        $keyword   = request('search');
+        $sortField = request('sort');
+        $order     = request('order');
+
         return $model->when($keyword,function ($query)use($keyword){
+
             return $query->where('name','like',"%{$keyword}%");
+
+        })->when(($sortField && $order),function ($query)use($sortField,$order){
+
+            return $query->orderBy($sortField,$order);
+
+        },function($query){
+
+            return $query->orderBy('id','desc');
+
         });
     }
 }
