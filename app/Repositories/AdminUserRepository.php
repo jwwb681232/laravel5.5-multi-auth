@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 use App\Admin;
+use \Prettus\Repository\Exceptions\RepositoryException;
 
 /**
  * Class RoleRepositoryEloquent.
@@ -30,15 +31,20 @@ class AdminUserRepository extends BaseRepository
      *
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function boot()
+    /*public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
-    }
+    }*/
 
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
     public function search(Request $request)
     {
-        //$condition = $this->model;
-        $condition = $this->pushCriteria(AdminUserCriteria::class);
+        $this->applyCriteria();
+        $condition = $this->model;
 
         $data['data'] = $this->parserResult(
             $condition->offset($request->get('offset'))->limit($request->get('limit'))->get()

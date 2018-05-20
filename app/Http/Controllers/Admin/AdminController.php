@@ -21,18 +21,17 @@ class AdminController extends Controller
 
     /**
      * Show the application dashboard.
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function index()
+    public function index(Request $request)
     {
         if (request()->wantsJson()) {
-            $this->repository->pushCriteria(AdminUserCriteria::class);
             $this->repository->setPresenter(AdminUserPresenter::class);
-            $adminUsers = $this->repository->search(\request());
-            return response()->json(
-                $adminUsers
-            );
+            $this->repository->pushCriteria(AdminUserCriteria::class);
+
+            return response()->json($this->repository->search($request));
         }
 
         return view('admin.admin-user.index');
