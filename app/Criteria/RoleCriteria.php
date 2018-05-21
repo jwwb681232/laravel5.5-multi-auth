@@ -22,7 +22,22 @@ class RoleCriteria implements CriteriaInterface
      */
     public function apply($model, RepositoryInterface $repository)
     {
-        //$model = $model->where('name','super_admin');
-        return $model;
+        $keyword   = request('search');
+        $sortField = request('sort');
+        $order     = request('order');
+
+        return $model->when($keyword,function ($query)use($keyword){
+
+            return $query->where('name','like',"%{$keyword}%");
+
+        })->when(($sortField && $order),function ($query)use($sortField,$order){
+
+            return $query->orderBy($sortField,$order);
+
+        },function($query){
+
+            return $query->orderBy('id','desc');
+
+        });
     }
 }

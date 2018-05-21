@@ -35,10 +35,8 @@ Route::prefix('admin')->group(function($route){
 });
 
 Route::group(['middleware' => 'auth:admin','prefix'=>'admin','namespace'=>'Admin'],function($route){
-    //仪表盘
-    $route->get('/', 'AdminController@index')->name('admin.dashboard');
-    //测试
-    $route->get('test', 'AdminController@test');
+    //后台用户
+    $route->resource('admin-user', 'AdminUserController');
     //角色
     $route->resource('roles', 'RolesController');
 });

@@ -1,30 +1,35 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="en" class="ie8"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="{{ app()->getLocale() }}">
 <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <title>{{ config('app.name') }} | Blank Page</title>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-    <meta content="" name="description" />
-    <meta content="" name="author" />
+    <meta charset="utf-8"/>
+    <title>{{ config('app.name') }} | Page with Transparent Sidebar</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+    <meta content="" name="description"/>
+    <meta content="" name="author"/>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic"
+          rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{{ asset('resources/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('resources/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('resources/css/animate.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('resources/css/style.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('resources/css/style-responsive.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('resources/css/theme/default.css') }}" rel="stylesheet" id="theme" />
+    <link href="{{ asset('resources/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/css/animate.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/css/style.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/css/style-responsive.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/css/theme/default.css') }}" rel="stylesheet" id="theme"/>
     <!-- ================== END BASE CSS STYLE ================== -->
-
     <!-- ================== BEGIN BASE JS ================== -->
     <script src="{{ asset('resources/plugins/pace/pace.min.js') }}"></script>
     <!-- ================== END BASE JS ================== -->
+
+    <!-- ================== BEGIN PAGE CSS ================== -->
+    <link href="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet"/>
+    <!-- ================== END  PAGE  CSS ================== -->
 </head>
 <body>
 <!-- begin #page-loader -->
@@ -39,7 +44,7 @@
 <!-- end #page-loader -->
 
 <!-- begin #page-container -->
-<div id="page-container" class="fade page-sidebar-fixed page-header-fixed page-with-wide-sidebar">
+<div id="page-container" class="page-container fade page-sidebar-fixed page-header-fixed page-with-wide-sidebar">
     <!-- begin #header -->
     <div id="header" class="header navbar navbar-default navbar-fixed-top">
         <!-- begin container-fluid -->
@@ -65,7 +70,8 @@
             <!-- begin header navigation right -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" class="icon notification waves-effect waves-light" data-toggle="navbar-search"><i class="material-icons">search</i></a>
+                    <a href="#" class="icon notification waves-effect waves-light" data-toggle="navbar-search"><i
+                                class="material-icons">search</i></a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="icon notification waves-effect waves-light" data-toggle="dropdown">
@@ -75,7 +81,8 @@
                         <li class="dropdown-header bg-indigo text-white">Notifications (5)</li>
                         <li class="media">
                             <a href="javascript:;">
-                                <div class="media-left"><img src="{{ asset('resources/img/user-1.jpg') }}" class="media-object" alt="" /></div>
+                                <div class="media-left"><img src="{{ asset('resources/img/user-1.jpg') }}"
+                                                             class="media-object" alt=""/></div>
                                 <div class="media-body">
                                     <h6 class="media-heading">John Smith</h6>
                                     <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
@@ -85,7 +92,8 @@
                         </li>
                         <li class="media">
                             <a href="javascript:;">
-                                <div class="media-left"><img src="{{ asset('resources/img/user-2.jpg') }}" class="media-object" alt="" /></div>
+                                <div class="media-left"><img src="{{ asset('resources/img/user-2.jpg') }}"
+                                                             class="media-object" alt=""/></div>
                                 <div class="media-body">
                                     <h6 class="media-heading">Olivia</h6>
                                     <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
@@ -95,7 +103,8 @@
                         </li>
                         <li class="media">
                             <a href="javascript:;">
-                                <div class="media-left"><i class="material-icons media-object bg-deep-purple">people</i></div>
+                                <div class="media-left"><i class="material-icons media-object bg-deep-purple">people</i>
+                                </div>
                                 <div class="media-body">
                                     <h6 class="media-heading"> New User Registered</h6>
                                     <div class="text-muted f-s-11">1 hour ago</div>
@@ -113,7 +122,8 @@
                         </li>
                         <li class="media">
                             <a href="javascript:;">
-                                <div class="media-left"><i class="material-icons media-object bg-teal">shopping_basket</i></div>
+                                <div class="media-left"><i
+                                            class="material-icons media-object bg-teal">shopping_basket</i></div>
                                 <div class="media-body">
                                     <h6 class="media-heading">You sold an item!</h6>
                                     <div class="text-muted f-s-11">3 hours ago</div>
@@ -127,7 +137,7 @@
                 </li>
                 <li class="dropdown navbar-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="{{ asset('resources/img/user.jpg') }}" alt="" />
+                        <img src="{{ asset('resources/img/user.jpg') }}" alt=""/>
                         <span class="hidden-xs">Hi, John Smith</span>
                     </a>
                     <ul class="dropdown-menu animated fadeInLeft">
@@ -154,7 +164,7 @@
     <!-- end #header -->
 
     <!-- begin #sidebar -->
-    <div id="sidebar" class="sidebar">
+    <div id="sidebar" class="sidebar sidebar-transparent">
         <!-- begin sidebar scrollbar -->
         <div data-scrollbar="true" data-height="100%">
             <!-- begin sidebar user -->
@@ -162,7 +172,7 @@
                 <li class="nav-profile">
                     <a href="#" data-toggle="nav-profile">
                         <div class="image">
-                            <img src="{{ asset('resources/img/user.jpg') }}" alt="" />
+                            <img src="{{ asset('resources/img/user.jpg') }}" alt=""/>
                         </div>
                         <div class="info">
                             <b class="caret pull-right"></b>
@@ -281,10 +291,13 @@
                         <span>Front End <span class="label label-theme m-l-5">NEW</span></span>
                     </a>
                     <ul class="sub-menu">
-                        <li><a href="../../frontend/one-page-parallax/template_content_html/index.html" target="_blank">One Page Parallax</a></li>
+                        <li><a href="../../frontend/one-page-parallax/template_content_html/index.html" target="_blank">One
+                                Page Parallax</a></li>
                         <li><a href="../../frontend/blog/template_content_html/index.html" target="_blank">Blog</a></li>
-                        <li><a href="../../frontend/forum/template_content_html/index.html" target="_blank">Forum</a></li>
-                        <li><a href="../../frontend/e-commerce/template_content_html/index.html" target="_blank">E-Commerce <i class="fa fa-paper-plane text-theme m-l-5"></i></a></li>
+                        <li><a href="../../frontend/forum/template_content_html/index.html" target="_blank">Forum</a>
+                        </li>
+                        <li><a href="../../frontend/e-commerce/template_content_html/index.html" target="_blank">E-Commerce
+                                <i class="fa fa-paper-plane text-theme m-l-5"></i></a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -341,7 +354,7 @@
                         <span>Page Options</span>
                     </a>
                     <ul class="sub-menu">
-                        <li class="active"><a href="page_blank.html">Blank Page</a></li>
+                        <li><a href="page_blank.html">Blank Page</a></li>
                         <li><a href="page_with_footer.html">Page with Footer</a></li>
                         <li><a href="page_without_sidebar.html">Page without Sidebar</a></li>
                         <li><a href="page_with_right_sidebar.html">Page with Right Sidebar</a></li>
@@ -357,7 +370,8 @@
                         <li><a href="page_with_boxed_layout.html">Page with Boxed Layout</a></li>
                         <li><a href="page_with_mixed_menu.html">Page with Mixed Menu</a></li>
                         <li><a href="page_boxed_layout_with_mixed_menu.html">Boxed Layout with Mixed Menu</a></li>
-                        <li><a href="page_with_transparent_sidebar.html">Page with Transparent Sidebar</a></li>
+                        <li class="active"><a href="page_with_transparent_sidebar.html">Page with Transparent
+                                Sidebar</a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -398,7 +412,8 @@
                         <li><a href="../template_content_html/index.html">HTML</a></li>
                         <li><a href="../template_content_ajax/index.html">AJAX</a></li>
                         <li><a href="../template_content_angularjs/index.html">ANGULAR JS</a></li>
-                        <li><a href="javascript:;">MATERIAL DESIGN <i class="fa fa-paper-plane text-theme m-l-5"></i></a></li>
+                        <li><a href="javascript:;">MATERIAL DESIGN <i
+                                        class="fa fa-paper-plane text-theme m-l-5"></i></a></li>
                     </ul>
                 </li>
                 <li class="has-sub">
@@ -443,7 +458,8 @@
                     </ul>
                 </li>
                 <!-- begin sidebar minify button -->
-                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
+                <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i
+                                class="fa fa-angle-double-left"></i></a></li>
                 <!-- end sidebar minify button -->
             </ul>
             <!-- end sidebar nav -->
@@ -459,11 +475,13 @@
         <ol class="breadcrumb pull-right">
             <li><a href="javascript:;">Home</a></li>
             <li><a href="javascript:;">Page Options</a></li>
-            <li class="active">Blank Page</li>
+            <li class="active">Page with Transparent Sidebar</li>
         </ol>
         <!-- end breadcrumb -->
         <!-- begin page-header -->
-        <h1 class="page-header">Blank Page <small>header small text goes here...</small></h1>
+        <h1 class="page-header">Page with Transparent Sidebar
+            <small>header small text goes here...</small>
+        </h1>
         <!-- end page-header -->
 
         <div class="row">
@@ -471,15 +489,33 @@
                 <div class="panel panel-inverse">
                     <div class="panel-heading">
                         <div class="panel-heading-btn">
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
+                               data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success"
+                               data-click="panel-reload"><i class="fa fa-repeat"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
+                               data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger"
+                               data-click="panel-remove"><i class="fa fa-times"></i></a>
                         </div>
                         <h4 class="panel-title">Panel Title here</h4>
                     </div>
                     <div class="panel-body">
-                        Panel Content Here
+                        <div id="toolbar" class="btn-group">
+                            <button id="btn_add" type="button" class="btn btn-success" onclick="addVideoShow();">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
+                            </button>
+                            <button id="btn_delete" type="button" class="btn btn-default" onclick="batchUploadShow();">
+                                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>批量上传
+                            </button>
+                            <button id="btn_edit" type="button" class="btn btn-default" onclick="editMemberInfoShow();">
+                                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>选择修改
+                            </button>
+                            <button id="btn_delete" type="button" class="btn btn-default" onclick="delMemberVideo();">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>选择删除
+                            </button>
+                        </div>
+                        <table id="data-table" class="table table-hover"></table>
                     </div>
                 </div>
             </div>
@@ -487,18 +523,35 @@
     </div>
     <!-- end #content -->
 
+    <!-- begin #footer -->
+    <div id="footer" class="footer">
+        &copy; 2018 {{ config('app.name') }}
+    </div>
+    <!-- end #footer -->
+
     <!-- begin theme-panel -->
     <div class="theme-panel">
         <a href="javascript:;" data-click="theme-panel-expand" class="theme-collapse-btn"><i class="fa fa-cog"></i></a>
         <div class="theme-panel-content">
             <h5 class="m-t-0">Color Theme</h5>
             <ul class="theme-list clearfix">
-                <li class="active"><a href="javascript:;" class="bg-cyan" data-theme="default" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Default/Cyan">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
-                <li><a href="javascript:;" class="bg-black" data-theme="black" data-click="theme-selector" data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a></li>
+                <li class="active"><a href="javascript:;" class="bg-cyan" data-theme="default"
+                                      data-click="theme-selector" data-toggle="tooltip" data-trigger="hover"
+                                      data-container="body" data-title="Default/Cyan">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-blue" data-theme="blue" data-click="theme-selector"
+                       data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Blue">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-purple" data-theme="purple" data-click="theme-selector"
+                       data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Purple">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-orange" data-theme="orange" data-click="theme-selector"
+                       data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Orange">&nbsp;</a>
+                </li>
+                <li><a href="javascript:;" class="bg-red" data-theme="red" data-click="theme-selector"
+                       data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Red">&nbsp;</a></li>
+                <li><a href="javascript:;" class="bg-black" data-theme="black" data-click="theme-selector"
+                       data-toggle="tooltip" data-trigger="hover" data-container="body" data-title="Black">&nbsp;</a>
+                </li>
             </ul>
             <div class="divider"></div>
             <div class="row m-t-10">
@@ -548,7 +601,8 @@
             </div>
             <div class="row m-t-10">
                 <div class="col-md-12">
-                    <a href="#" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage"><i class="fa fa-refresh m-r-3"></i> Reset Local Storage</a>
+                    <a href="#" class="btn btn-inverse btn-block btn-sm" data-click="reset-local-storage"><i
+                                class="fa fa-refresh m-r-3"></i> Reset Local Storage</a>
                 </div>
             </div>
         </div>
@@ -556,7 +610,8 @@
     <!-- end theme-panel -->
 
     <!-- begin scroll to top btn -->
-    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i
+                class="fa fa-angle-up"></i></a>
     <!-- end scroll to top btn -->
 </div>
 <!-- end page container -->
@@ -577,11 +632,77 @@
 
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <script src="{{ asset('resources/js/apps.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/table-export/tableExport.min.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         App.init();
+        $('#data-table').bootstrapTable({
+            method: 'get',
+            //contentType: "application/x-www-form-urlencoded",//必须要有！！！！
+            url: '{{ url('admin/roles') }}',//要请求数据的文件路径
+            //height:tableHeight(),//高度调整
+            toolbar: '#toolbar',//指定工具栏
+            striped: true, //是否显示行间隔色
+            sortable:true,
+            dataField: "data",//bootstrap table 可以前端分页也可以后端分页，这里
+            pageNumber: 1, //初始化加载第一页，默认第一页
+            pagination: true,//是否分页
+            queryParamsType: 'limit',//查询参数组织方式
+            // queryParams:	function(params) {
+            //     return {
+            //         page:params.pageNumber,
+            //         limit:params.pageSize
+            //     };
+            // },//请求服务器时所传的参数
+            sidePagination: 'server',//指定服务器端分页
+            pageSize: 10,//单页记录数
+            pageList: [10, 20, 30],//分页步进值
+            showRefresh: true,//刷新按钮
+            showColumns: true,
+            search:true,
+            clickToSelect: true,//是否启用点击选中行
+            toolbarAlign: 'left',//工具栏对齐方式
+            buttonsAlign: 'right',//按钮对齐方式
+            //toolbar:'#toolbar',//指定工作栏
+            showExport: true,
+            exportDataType: 'all',
+            columns: [
+                {
+                    checkbox: true
+                },
+                {
+                    title: 'id',
+                    field: 'id',
+                    visible: true,
+                    sortable: true
+                },
+                {
+                    title: 'Name',
+                    field: 'name',
+                    sortable: true
+                },
+                {
+                    title: 'Guard',
+                    field: 'guard',
+                    sortable: true
+                },
+                {
+                    title: 'Created At',
+                    field: 'created_at',
+                    sortable: true
+                }
+                ,
+                {
+                    title: 'Updated At',
+                    field: 'updated_at',
+                    sortable: true
+                }
+            ]
+        })
     });
 </script>
 </body>

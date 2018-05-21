@@ -22,12 +22,12 @@ class RoleTransformer extends TransformerAbstract
     public function transform(Role $model)
     {
         return [
-            'id'         => (int) $model->id,
-
-            /* place your other model properties here */
-
+            'id'         => (int)$model->id,
+            'name'       => (string)$model->name,
+            'guard'       => (string)$model->guard_name,
+            //'created_at' => (string)$model->created_at->timestamp,
             'created_at' => (string)$model->created_at->toDateTimeString(),
-            'updated_at' => (string)$model->updated_at->timestamp
+            'updated_at' => (string)$model->updated_at->toDateTimeString(),
         ];
     }
 }

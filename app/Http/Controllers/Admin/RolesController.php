@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Criteria\RoleCriteria;
 use App\Presenters\RolePresenter;
+use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Repositories\RoleRepository;
@@ -32,10 +33,26 @@ class RolesController extends Controller
 
     /**
      * Display a listing of the resource.
+     * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function index()
+    public function index(Request $request)
+    {
+        if (request()->wantsJson()) {
+            $this->repository->pushCriteria(RoleCriteria::class);
+            $this->repository->setPresenter(RolePresenter::class);
+            return response()->json($this->repository->search($request));
+        }
+        return view('admin.roles.index', compact('roles'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function index_bak()
     {
         $this->repository->pushCriteria(RoleCriteria::class);
         $this->repository->setPresenter(RolePresenter::class);
