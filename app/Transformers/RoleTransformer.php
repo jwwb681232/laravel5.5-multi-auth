@@ -24,7 +24,7 @@ class RoleTransformer extends TransformerAbstract
         return [
             'id'         => (int)$model->id,
             'name'       => (string)$model->name,
-            'guard'       => (string)$model->guard_name,
+            'guard_name' => (string)$model->guard_name,
             //'created_at' => (string)$model->created_at->timestamp,
             'created_at' => (string)$model->created_at->toDateTimeString(),
             'updated_at' => (string)$model->updated_at->toDateTimeString(),

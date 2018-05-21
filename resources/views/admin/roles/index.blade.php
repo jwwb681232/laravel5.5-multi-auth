@@ -687,7 +687,7 @@
                 },
                 {
                     title: 'Guard',
-                    field: 'guard',
+                    field: 'guard_name',
                     sortable: true
                 },
                 {
