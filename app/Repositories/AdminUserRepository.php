@@ -49,7 +49,7 @@ class AdminUserRepository extends BaseRepository
         $data['total'] = $condition->count();
 
         $data['data'] = $this->parserResult(
-            $condition->offset($request->get('offset'))->limit($request->get('limit'))->get()
+            $condition->offset($request->get('offset',0))->limit($request->get('limit',$data['total']))->get()
         );
 
 

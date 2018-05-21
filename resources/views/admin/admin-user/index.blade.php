@@ -669,16 +669,10 @@
             buttonsAlign: 'right',//按钮对齐方式
             //toolbar:'#toolbar',//指定工作栏
             showExport: true,
-            exportDataType: 'selected',
+            exportDataType: 'all',
             columns: [
                 {
-                    title: '全选',
-                    field: 'select',
-                    //复选框
-                    checkbox: true,
-                    width: 25,
-                    align: 'center',
-                    valign: 'middle'
+                    checkbox: true
                 },
                 {
                     title: 'id',
