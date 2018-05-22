@@ -12,8 +12,7 @@
     <meta content="" name="author"/>
 
     <!-- ================== BEGIN BASE CSS STYLE ================== -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic"
-          rel="stylesheet" type="text/css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100italic,300,300italic,400,400italic,500,500italic,700,700italic,900,900italic" rel="stylesheet" type="text/css"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('resources/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
@@ -28,7 +27,7 @@
     <!-- ================== END BASE JS ================== -->
 
     <!-- ================== BEGIN PAGE CSS ================== -->
-    <link href="{{ asset('resources/plugins/parsley/src/parsley.css') }}" rel="stylesheet"/>
+
     <!-- ================== END  PAGE  CSS ================== -->
 </head>
 <body>
@@ -70,8 +69,7 @@
             <!-- begin header navigation right -->
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" class="icon notification waves-effect waves-light" data-toggle="navbar-search"><i
-                                class="material-icons">search</i></a>
+                    <a href="#" class="icon notification waves-effect waves-light" data-toggle="navbar-search"><i class="material-icons">search</i></a>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="icon notification waves-effect waves-light" data-toggle="dropdown">
@@ -496,7 +494,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="panel-body panel-form">
-                            <form class="form-horizontal form-bordered" data-parsley-validate="true" action="{{ url('admin/permissions') }}" method="POST">
+                            <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/permissions') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3">Industry Name <span style="color: red;font-weight: 600">*</span> :</label>
@@ -628,6 +626,7 @@
 
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <script src="{{ asset('resources/js/apps.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/parsley/dist/parsley.min.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>
