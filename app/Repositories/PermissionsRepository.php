@@ -1,17 +1,24 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: wangxiao
+ * Date: 2018/5/22
+ * Time: 22:43
+ */
 
 namespace App\Repositories;
 
-use Illuminate\Http\Request;
 use Prettus\Repository\Eloquent\BaseRepository;
-use App\Admin;
+use Prettus\Repository\Criteria\RequestCriteria;
+use App\Entities\Permission;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class RoleRepositoryEloquent.
+ * Class RolesRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class AdminUsersRepository extends BaseRepository
+class PermissionsRepository extends BaseRepository
 {
     /**
      * Specify Model class name
@@ -20,7 +27,7 @@ class AdminUsersRepository extends BaseRepository
      */
     public function model()
     {
-        return Admin::class;
+        return Permission::class;
     }
 
     /**
@@ -28,10 +35,10 @@ class AdminUsersRepository extends BaseRepository
      *
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    /*public function boot()
+    public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
-    }*/
+    }
 
     /**
      * @param Request $request
@@ -46,7 +53,8 @@ class AdminUsersRepository extends BaseRepository
         $data['total'] = $condition->count();
 
         $data['data'] = $this->parserResult(
-            $condition->offset($request->get('offset',0))->limit($request->get('limit',$data['total']))->get()
+            $condition->offset($request->get('offset', 0))->limit($request->get('limit', $data['total']))
+                ->get()
         );
 
 

@@ -1,4 +1,10 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: wangxiao
+ * Date: 2018/5/22
+ * Time: 22:39
+ */
 
 namespace App\Http\Controllers\Admin;
 
@@ -7,33 +13,35 @@ use App\Presenters\RolePresenter;
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
-use App\Repositories\RolesRepository;
+use App\Repositories\PermissionsRepository;
 
 /**
  * Class RolesController.
  *
  * @package namespace App\Http\Controllers\Admin;
  */
-class RolesController extends Controller
+class PermissionsController extends Controller
 {
     /**
-     * @var RolesRepository
+     * @var PermissionsRepository
      */
     protected $repository;
 
     /**
      * RolesController constructor.
      *
-     * @param RolesRepository $repository
+     * @param PermissionsRepository $repository
      */
-    public function __construct(RolesRepository $repository)
+    public function __construct(PermissionsRepository $repository)
     {
         $this->repository = $repository;
     }
 
     /**
      * Display a listing of the resource.
+     *
      * @param Request $request
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
@@ -42,13 +50,16 @@ class RolesController extends Controller
         if (request()->wantsJson()) {
             $this->repository->pushCriteria(RoleCriteria::class);
             $this->repository->setPresenter(RolePresenter::class);
+
             return response()->json($this->repository->search($request));
         }
+
         return view('admin.roles.index', compact('roles'));
     }
 
     /**
      * Display a listing of the resource.
+     *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
@@ -59,10 +70,13 @@ class RolesController extends Controller
         $roles = $this->repository->all();
         if (request()->wantsJson()) {
 
-            return response()->json([
-                'data' => $roles,
-            ]);
+            return response()->json(
+                [
+                    'data' => $roles,
+                ]
+            );
         }
+
         return view('admin.roles.index', compact('roles'));
     }
 
@@ -96,10 +110,12 @@ class RolesController extends Controller
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
             if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
+                return response()->json(
+                    [
+                        'error'   => true,
+                        'message' => $e->getMessageBag(),
+                    ]
+                );
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
@@ -119,9 +135,11 @@ class RolesController extends Controller
 
         if (request()->wantsJson()) {
 
-            return response()->json([
-                'data' => $role,
-            ]);
+            return response()->json(
+                [
+                    'data' => $role,
+                ]
+            );
         }
 
         return view('roles.show', compact('role'));
@@ -174,10 +192,12 @@ class RolesController extends Controller
 
             if ($request->wantsJson()) {
 
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
+                return response()->json(
+                    [
+                        'error'   => true,
+                        'message' => $e->getMessageBag(),
+                    ]
+                );
             }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
@@ -198,10 +218,12 @@ class RolesController extends Controller
 
         if (request()->wantsJson()) {
 
-            return response()->json([
-                'message' => 'Role deleted.',
-                'deleted' => $deleted,
-            ]);
+            return response()->json(
+                [
+                    'message' => 'Role deleted.',
+                    'deleted' => $deleted,
+                ]
+            );
         }
 
         return redirect()->back()->with('message', 'Role deleted.');

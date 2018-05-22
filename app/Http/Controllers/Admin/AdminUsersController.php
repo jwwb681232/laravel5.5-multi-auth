@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Admin;
+use Illuminate\Http\Request;
 use App\Criteria\AdminUsersCriteria;
 use App\Presenters\AdminUsersPresenter;
 use App\Repositories\AdminUsersRepository;
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
 
 class AdminUsersController extends Controller
 {

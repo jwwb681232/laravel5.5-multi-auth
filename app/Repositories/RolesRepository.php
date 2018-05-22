@@ -8,11 +8,11 @@ use App\Entities\Role;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Class RoleRepositoryEloquent.
+ * Class RolesRepositoryEloquent.
  *
  * @package namespace App\Repositories;
  */
-class RoleRepository extends BaseRepository
+class RolesRepository extends BaseRepository
 {
     /**
      * Specify Model class name
