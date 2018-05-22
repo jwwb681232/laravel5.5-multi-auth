@@ -496,10 +496,20 @@
                         <div class="panel-body panel-form">
                             <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/permissions') }}" method="POST">
                                 {{ csrf_field() }}
-                                <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3">Industry Name <span style="color: red;font-weight: 600">*</span> :</label>
+                                <div class="form-group @if($errors->has('email')) has-error has-feedback @endif">
+                                    <label class="control-label col-md-3 col-sm-3">Permission Name <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
-                                        <input class="form-control" type="text" id="industry_name" name="industry_name" data-type="text" placeholder="Enter Industry Name" data-parsley-required="true"/>
+                                        <input class="form-control"
+                                               type="text"
+                                               data-type="text"
+                                               name="name"
+                                               id="permission_name"
+                                               placeholder="Enter Permission Name"
+                                               data-parsley-required="true"
+                                               data-parsley-minlength="3"
+                                               data-parsley-maxlength="200"
+                                        />
+                                        @if($errors->has('email'))<span class="ion-close form-control-feedback"></span>@endif
                                     </div>
                                 </div>
                                 <div class="form-group">
