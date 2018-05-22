@@ -57,6 +57,11 @@ class PermissionsController extends Controller
         return view('admin.permissions.index');
     }
 
+    public function create()
+    {
+        return view('admin.permissions.create');
+    }
+
     /**
      * Display a listing of the resource.
      *
