@@ -643,7 +643,7 @@
         $('#data-table').bootstrapTable({
             method: 'get',
             //contentType: "application/x-www-form-urlencoded",//必须要有！！！！
-            url: '{{ url('admin/admin-user') }}',//要请求数据的文件路径
+            url: '{{ url('admin/admin-users') }}',//要请求数据的文件路径
             //height:tableHeight(),//高度调整
             toolbar: '#toolbar',//指定工具栏
             striped: true, //是否显示行间隔色

@@ -14,7 +14,7 @@ use \Prettus\Repository\Exceptions\RepositoryException;
  *
  * @package namespace App\Repositories;
  */
-class AdminUserRepository extends BaseRepository
+class AdminUsersRepository extends BaseRepository
 {
     /**
      * Specify Model class name

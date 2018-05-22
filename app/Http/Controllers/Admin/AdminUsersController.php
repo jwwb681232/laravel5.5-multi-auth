@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Admin;
-use App\Criteria\AdminUserCriteria;
-use App\Presenters\AdminUserPresenter;
-use App\Repositories\AdminUserRepository;
+use App\Criteria\AdminUsersCriteria;
+use App\Presenters\AdminUsersPresenter;
+use App\Repositories\AdminUsersRepository;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class AdminUserController extends Controller
+class AdminUsersController extends Controller
 {
     protected $repository;
 
-    public function __construct(AdminUserRepository $repository)
+    public function __construct(AdminUsersRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -30,13 +30,13 @@ class AdminUserController extends Controller
     public function index(Request $request)
     {
         if (request()->wantsJson()) {
-            $this->repository->setPresenter(AdminUserPresenter::class);
-            $this->repository->pushCriteria(AdminUserCriteria::class);
+            $this->repository->setPresenter(AdminUsersPresenter::class);
+            $this->repository->pushCriteria(AdminUsersCriteria::class);
 
             return response()->json($this->repository->search($request));
         }
 
-        return view('admin.admin-user.index');
+        return view('admin.admin-users.index');
     }
 
     public function test()

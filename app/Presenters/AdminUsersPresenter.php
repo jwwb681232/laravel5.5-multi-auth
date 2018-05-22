@@ -16,7 +16,7 @@ use Prettus\Repository\Presenter\FractalPresenter;
  *
  * @package namespace App\Presenters;
  */
-class AdminUserPresenter extends FractalPresenter
+class AdminUsersPresenter extends FractalPresenter
 {
     /**
      * Transformer
