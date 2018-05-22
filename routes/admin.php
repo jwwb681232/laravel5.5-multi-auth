@@ -17,6 +17,7 @@ Route::post('password/email','\App\Http\Controllers\Auth\AdminForgotPasswordCont
 Route::get('password/reset','\App\Http\Controllers\Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
 Route::post('password/reset','\App\Http\Controllers\Auth\AdminResetPasswordController@reset');
 Route::get('password/reset/{token}','\App\Http\Controllers\Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+//endregion
 
 Route::group(['middleware' => 'auth:admin'],function($route){
     //仪表盘
@@ -27,4 +28,7 @@ Route::group(['middleware' => 'auth:admin'],function($route){
     $route->resource('admin-users', 'AdminUsersController');
     //角色
     $route->resource('roles', 'RolesController');
+    //region Permissions 权限
+    $route->resource('permissions', 'PermissionsController');
+    //endregion
 });
