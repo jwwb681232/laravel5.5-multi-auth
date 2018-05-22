@@ -28,7 +28,7 @@
     <!-- ================== END BASE JS ================== -->
 
     <!-- ================== BEGIN PAGE CSS ================== -->
-    <link href="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/plugins/parsley/src/parsley.css') }}" rel="stylesheet"/>
     <!-- ================== END  PAGE  CSS ================== -->
 </head>
 <body>
@@ -486,28 +486,32 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-inverse">
+                <div class="panel panel-inverse" data-sortable-id="table-basic-1">
                     <div class="panel-heading">
                         <div class="panel-heading-btn">
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default"
-                               data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success"
-                               data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning"
-                               data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger"
-                               data-click="panel-remove"><i class="fa fa-times"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="ion-loop"></i></a>
+                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="ion-minus-round"></i></a>
                         </div>
-                        <h4 class="panel-title">Panel Title here</h4>
+                        <h4 class="panel-title">Add New</h4>
                     </div>
                     <div class="panel-body">
-                        <div id="toolbar" class="btn-group">
-                            <button type="button" class="btn btn-success" onclick='window.location.href="{{ url('admin/permissions/create') }}"'>
-                                <i class="ion-plus"> </i>新增
-                            </button>
-                            {{--<button type="button" class="btn btn-default"><i class="ion-plus"> </i>新增</button>--}}
+                        <div class="panel-body panel-form">
+                            <form class="form-horizontal form-bordered" data-parsley-validate="true" action="{{ url('admin/permissions') }}" method="POST">
+                                {{ csrf_field() }}
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3">Industry Name <span style="color: red;font-weight: 600">*</span> :</label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <input class="form-control" type="text" id="industry_name" name="industry_name" data-type="text" placeholder="Enter Industry Name" data-parsley-required="true"/>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3"></label>
+                                    <div class="col-md-7 col-sm-7">
+                                        <button type="submit" class="btn btn-danger">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <table id="data-table" class="table table-hover"></table>
                     </div>
                 </div>
             </div>
