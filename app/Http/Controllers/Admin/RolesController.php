@@ -44,7 +44,7 @@ class RolesController extends Controller
             $this->repository->setPresenter(RolePresenter::class);
             return response()->json($this->repository->search($request));
         }
-        return view('admin.roles.index', compact('roles'));
+        return view('admin.roles.index');
     }
 
     /**
