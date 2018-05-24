@@ -508,6 +508,7 @@
                                                data-parsley-required="true"
                                                data-parsley-minlength="3"
                                                data-parsley-maxlength="200"
+                                               value="{{ old('name') }}"
                                         />
                                         @if($errors->has('email'))<span class="ion-close form-control-feedback"></span>@endif
                                     </div>

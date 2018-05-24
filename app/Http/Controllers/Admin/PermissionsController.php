@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Criteria\PermissionsTableDataCriteria;
+use App\Http\Requests\PermissionsRequest;
 use App\Presenters\PermissionsTableDataPresenter;
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
@@ -70,13 +71,13 @@ class PermissionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  RoleCreateRequest $request
+     * @param  PermissionsRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(RoleCreateRequest $request)
+    public function store(PermissionsRequest $request)
     {
         try {
 
