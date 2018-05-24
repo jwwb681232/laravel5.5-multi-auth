@@ -57,32 +57,14 @@ class PermissionsController extends Controller
         return view('admin.permissions.index');
     }
 
+    /**
+     * Display create form
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
+     */
     public function create()
     {
         return view('admin.permissions.create');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\JsonResponse|\Illuminate\View\View
-     * @throws \Prettus\Repository\Exceptions\RepositoryException
-     */
-    public function index_bak()
-    {
-        $this->repository->pushCriteria(RoleCriteria::class);
-        $this->repository->setPresenter(RolePresenter::class);
-        $roles = $this->repository->all();
-        if (request()->wantsJson()) {
-
-            return response()->json(
-                [
-                    'data' => $roles,
-                ]
-            );
-        }
-
-        return view('admin.roles.index', compact('roles'));
     }
 
     /**
