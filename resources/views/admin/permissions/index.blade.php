@@ -18,6 +18,7 @@
     <link href="{{ asset('resources/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources//plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('resources/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('resources/css/animate.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/css/style.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/css/style-responsive.min.css') }}" rel="stylesheet"/>

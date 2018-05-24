@@ -9,12 +9,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Criteria\PermissionsTableDataCriteria;
-use App\Http\Requests\PermissionsRequest;
 use App\Presenters\PermissionsTableDataPresenter;
 use Illuminate\Http\Request;
 use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Repositories\PermissionsRepository;
+use App\Validators\PermissionsValidator;
+use App\Http\Requests\Permissions\CreateRequest;
+use App\Http\Requests\Permissions\UpdateRequest;
 
 /**
  * Class RolesController.
@@ -28,14 +30,18 @@ class PermissionsController extends Controller
      */
     protected $repository;
 
+    protected $validator;
+
     /**
      * RolesController constructor.
      *
      * @param PermissionsRepository $repository
+     * @param PermissionsValidator  $validator
      */
-    public function __construct(PermissionsRepository $repository)
+    public function __construct(PermissionsRepository $repository, PermissionsValidator $validator)
     {
         $this->repository = $repository;
+        $this->validator  = $validator;
     }
 
     /**
@@ -71,13 +77,13 @@ class PermissionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  PermissionsRequest $request
+     * @param  CreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function store(PermissionsRequest $request)
+    public function store(CreateRequest $request)
     {
         try {
 
@@ -90,22 +96,8 @@ class PermissionsController extends Controller
                 'data'    => $role->toArray(),
             ];
 
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
             return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json(
-                    [
-                        'error'   => true,
-                        'message' => $e->getMessageBag(),
-                    ]
-                );
-            }
-
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
     }
