@@ -17,6 +17,7 @@
     <link href="{{ asset('resources/plugins/jquery-ui/themes/base/minified/jquery-ui.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources//plugins/ionicons/css/ionicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('resources/plugins/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('resources/css/animate.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/css/style.min.css') }}" rel="stylesheet"/>
     <link href="{{ asset('resources/css/style-responsive.min.css') }}" rel="stylesheet"/>
@@ -496,21 +497,23 @@
                         <div class="panel-body panel-form">
                             <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/permissions') }}" method="POST">
                                 {{ csrf_field() }}
-                                <div class="form-group @if($errors->has('email')) has-error has-feedback @endif">
+                                <div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
                                     <label class="control-label col-md-3 col-sm-3">Permission Name <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
-                                        <input class="form-control"
+                                        <input class="form-control" @if($errors->has('name'))data-toggle="tooltip" data-placement="top" data-original-title="{{ $errors->first('name') }}" @endif
                                                type="text"
                                                data-type="text"
                                                name="name"
-                                               id="permission_name"
+                                               id="name"
                                                placeholder="Enter Permission Name"
                                                data-parsley-required="true"
                                                data-parsley-minlength="3"
                                                data-parsley-maxlength="200"
                                                value="{{ old('name') }}"
                                         />
-                                        @if($errors->has('email'))<span class="ion-close form-control-feedback"></span>@endif
+                                        @if($errors->has('name'))
+                                            <span class="ion-close form-control-feedback"></span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="form-group">
