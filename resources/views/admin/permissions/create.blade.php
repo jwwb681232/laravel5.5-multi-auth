@@ -516,6 +516,16 @@
                                         @endif
                                     </div>
                                 </div>
+                                <div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
+                                    <label class="control-label col-md-3 col-sm-3">Permission Name <span style="color: red;font-weight: 600">*</span> :</label>
+                                    <div id="custom_data" class="col-md-7 col-sm-7 form-inline">
+                                        <select class="first form-control"></select>
+                                        <select class="second form-control"></select>
+                                        <select class="third form-control"></select>
+                                        <select class="fourth form-control"></select>
+                                        <select class="fifth form-control"></select>
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3"></label>
                                     <div class="col-md-7 col-sm-7">
@@ -641,11 +651,33 @@
 <!-- ================== BEGIN PAGE LEVEL JS ================== -->
 <script src="{{ asset('resources/js/apps.min.js') }}"></script>
 <script src="{{ asset('resources/plugins/parsley/dist/parsley.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/linkage-select/js/jquery.cxselect.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
 
 <script>
     $(document).ready(function () {
         App.init();
+        $('#custom_data').cxSelect({
+            selects: ['first', 'second', 'third', 'fourth', 'fifth'],
+            jsonName: 'name',
+            jsonValue: 'value',
+            jsonSub: 'sub',
+            data: [
+                {name:'A', value: '1', sub: [
+                    {name: 'A-1', value: '2', sub: [
+                        {name: 'A-1-1', value: '11'}
+                    ]},
+                    {name: 'A-2', value: '3', sub: [
+                        {name: 'A-2-1', value: '34'}
+                    ]}
+                ]},
+                {name:'B', value: '5', sub: [
+                    {name: 'B-1', value: '8', sub: [
+                        {name: 'B-1-1', value: '16'}
+                    ]}
+                ]}
+            ]
+        });
     });
 </script>
 </body>
