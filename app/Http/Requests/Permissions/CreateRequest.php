@@ -24,7 +24,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required|digits_between:10,20'
+            'name'      => 'required|digits_between:3,200',
+            'parent_id' => 'required|numeric|min:0',
         ];
     }
 }

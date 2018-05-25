@@ -58,3 +58,5 @@ $user->hasAnyRole(Role::all());
 ```php
 $user->hasAllRoles(Role::all());
 ```
+
+sudo openssl req -x509 -nodes -days 36500 -newkey rsa:2048 -keyout ./api.yyjobs.key -out ./api.yyjobs.crt
