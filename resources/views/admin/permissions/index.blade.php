@@ -507,7 +507,6 @@
                             <button type="button" class="btn btn-success" onclick='window.location.href="{{ url('admin/permissions/create') }}"'>
                                 <i class="ion-plus"> </i>新增
                             </button>
-                            {{--<button type="button" class="btn btn-default"><i class="ion-plus"> </i>新增</button>--}}
                         </div>
                         <table id="data-table" class="table table-hover"></table>
                     </div>
@@ -652,6 +651,7 @@
             dataField: "data",//bootstrap table 可以前端分页也可以后端分页，这里
             pageNumber: 1, //初始化加载第一页，默认第一页
             pagination: true,//是否分页
+            uniqueId:'id',
             queryParamsType: 'limit',//查询参数组织方式
             // queryParams:	function(params) {
             //     return {
@@ -701,9 +701,17 @@
                     title: 'Updated At',
                     field: 'updated_at',
                     sortable: true
+                }, {
+                    field: 'operate',
+                    title: 'Operate',
+                    formatter: actionButton
                 }
             ]
         })
+
+        function actionButton(value, row, index) {
+            return '<button type="button" class="btn btn-default  btn-xs">A权限</button>';
+        }
     });
 </script>
 </body>
