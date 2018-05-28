@@ -51,8 +51,29 @@
     };
 
     var actionButton = function(value, row, index){
-        return '<button type="button" class="btn btn-default  btn-xs">A权限</button>';
+        var deleteButton = '<a href="javascript:;" data-id="'+row.id+'" class="btn btn-danger btn-xs destroy"><i class="fa fa-trash"> Delete</i><form action="{{ url('admin/permissions') }}/'+row.id+'" method="POST" name="delete_item_'+row.id+'" style="display:none">{!! method_field('DELETE').csrf_field() !!}</form></a>';
+        return deleteButton;
     };
+
+    var handleDestroy = function(){
+        $(document).on('click','.destroy',function(){
+            var _delete_id = $(this).attr('data-id');
+            swal({
+                    title: "您确定要删除这条信息吗",
+                    text: "删除后将无法恢复，请谨慎操作！",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "确定",
+                    cancelButtonText: "取消",
+                    closeOnConfirm: false
+                },
+                function () {
+                    $('form[name=delete_item_'+_delete_id+']').submit();
+                }
+            );
+        });
+    }
 
 
     var Permissions = function () {
@@ -62,6 +83,7 @@
             index:function(){
                 handleGritterMessage();
                 handleIndexTableData();
+                handleDestroy();
             }
         };
     }();

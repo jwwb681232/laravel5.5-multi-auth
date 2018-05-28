@@ -186,18 +186,8 @@ class PermissionsController extends Controller
      */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete($id);
+        $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json(
-                [
-                    'message' => 'Role deleted.',
-                    'deleted' => $deleted,
-                ]
-            );
-        }
-
-        return redirect()->back()->with('message', 'Role deleted.');
+        return redirect()->back()->with('message', 'Permission deleted.');
     }
 }
