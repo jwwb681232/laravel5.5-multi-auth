@@ -1,9 +1,3 @@
-/**
- * Created by PhpStorm.
- * User: wangxiao
- * Date: 2018/5/29
- * Time: 0:17
- */
 <script>
     var handleGritterMessage = function () {
         @if (session('message'))
