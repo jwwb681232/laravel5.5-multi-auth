@@ -25,7 +25,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'name'      => 'required|digits_between:3,200',
-            'parent_id' => 'required|numeric|min:0',
+            //'parent_id' => 'required|numeric|min:0',
         ];
     }
 }

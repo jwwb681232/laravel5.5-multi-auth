@@ -96,7 +96,8 @@ class PermissionsController extends Controller
                 'data'    => $role->toArray(),
             ];
 
-            return redirect()->back()->with('message', $response['message']);
+//            return redirect()->back()->with('message', $response['message']);
+            return redirect('admin/permissions')->with('message', $response['message']);
         } catch (ValidatorException $e) {
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }

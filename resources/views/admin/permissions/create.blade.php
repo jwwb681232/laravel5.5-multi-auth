@@ -516,7 +516,7 @@
                                         @endif
                                     </div>
                                 </div>
-                                <div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
+                                {{--<div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
                                     <label class="control-label col-md-3 col-sm-3">Permission Name <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div id="custom_data" class="col-md-7 col-sm-7 form-inline">
                                         <select class="first form-control"></select>
@@ -525,7 +525,7 @@
                                         <select class="fourth form-control"></select>
                                         <select class="fifth form-control"></select>
                                     </div>
-                                </div>
+                                </div>--}}
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3"></label>
                                     <div class="col-md-7 col-sm-7">
