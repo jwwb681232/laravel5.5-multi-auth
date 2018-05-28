@@ -630,7 +630,6 @@
 <script src="{{ asset('resources/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
 <script src="{{ asset('resources/plugins/table-export/tableExport.min.js') }}"></script>
 <script src="{{ asset('resources/plugins/gritter/js/jquery.gritter.js') }}"></script>
-<script src="{{ asset('resources/plugins/gritter/js/jquery.gritter.js') }}"></script>
 <script src="{{ asset('resources/plugins/sweetalert/sweetalert.min.js') }}"></script>
 @include('admin.permissions.javascript')
 <!-- ================== END PAGE LEVEL JS ================== -->
