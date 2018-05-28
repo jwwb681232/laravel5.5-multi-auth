@@ -30,6 +30,7 @@
 
     <!-- ================== BEGIN PAGE CSS ================== -->
     <link href="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
     <!-- ================== END  PAGE  CSS ================== -->
 </head>
 <body>
@@ -628,11 +629,18 @@
 <script src="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
 <script src="{{ asset('resources/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
 <script src="{{ asset('resources/plugins/table-export/tableExport.min.js') }}"></script>
+<script src="{{ asset('resources/plugins/gritter/js/jquery.gritter.js') }}"></script>
 <!-- ================== END PAGE LEVEL JS ================== -->
-
 <script>
     $(document).ready(function () {
         App.init();
+        @if (session('message'))
+        $.gritter.add({
+            title: 'message',
+            text: '{{ session('message') }}'
+        });
+        @endif
+
         $('#data-table').bootstrapTable({
             method: 'get',
             //contentType: "application/x-www-form-urlencoded",//必须要有！！！！

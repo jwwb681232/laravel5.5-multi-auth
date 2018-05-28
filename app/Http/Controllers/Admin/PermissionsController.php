@@ -79,25 +79,16 @@ class PermissionsController extends Controller
      *
      * @param  CreateRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return $this|\Illuminate\Http\RedirectResponse
      *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(CreateRequest $request)
     {
         try {
-
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $this->repository->create($request->all());
 
-            $role = $this->repository->create($request->all());
-
-            $response = [
-                'message' => 'Role created.',
-                'data'    => $role->toArray(),
-            ];
-
-//            return redirect()->back()->with('message', $response['message']);
-            return redirect('admin/permissions')->with('message', $response['message']);
+            return redirect('admin/permissions')->with('message', 'Permission created.');
         } catch (ValidatorException $e) {
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }
@@ -135,9 +126,9 @@ class PermissionsController extends Controller
      */
     public function edit($id)
     {
-        $role = $this->repository->find($id);
+        $permission = $this->repository->find($id);
 
-        return view('roles.edit', compact('role'));
+        return view('permissions.edit', compact('permission'));
     }
 
     /**
