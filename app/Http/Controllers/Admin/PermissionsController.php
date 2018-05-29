@@ -11,10 +11,8 @@ namespace App\Http\Controllers\Admin;
 use App\Criteria\PermissionsTableDataCriteria;
 use App\Presenters\PermissionsTableDataPresenter;
 use Illuminate\Http\Request;
-use Prettus\Validator\Contracts\ValidatorInterface;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Repositories\PermissionsRepository;
-use App\Validators\PermissionsValidator;
 use App\Http\Requests\Permissions\CreateRequest;
 use App\Http\Requests\Permissions\UpdateRequest;
 
@@ -30,18 +28,15 @@ class PermissionsController extends Controller
      */
     protected $repository;
 
-    protected $validator;
 
     /**
      * RolesController constructor.
      *
      * @param PermissionsRepository $repository
-     * @param PermissionsValidator  $validator
      */
-    public function __construct(PermissionsRepository $repository, PermissionsValidator $validator)
+    public function __construct(PermissionsRepository $repository)
     {
         $this->repository = $repository;
-        $this->validator  = $validator;
     }
 
     /**
@@ -77,21 +72,16 @@ class PermissionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreateRequest $request
+     * @param CreateRequest $request
      *
-     * @return $this|\Illuminate\Http\RedirectResponse
-     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidatorException
      */
     public function store(CreateRequest $request)
     {
-        try {
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
-            $this->repository->create($request->all());
+        $this->repository->create($request->all());
 
-            return redirect('admin/permissions')->with('message', 'Permission created.');
-        } catch (ValidatorException $e) {
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        return redirect('admin/permissions')->with('message', 'Permission created.');
     }
 
     /**
@@ -106,12 +96,7 @@ class PermissionsController extends Controller
         $role = $this->repository->find($id);
 
         if (request()->wantsJson()) {
-
-            return response()->json(
-                [
-                    'data' => $role,
-                ]
-            );
+            return response()->json(['data' => $role]);
         }
 
         return view('roles.show', compact('role'));
@@ -134,22 +119,16 @@ class PermissionsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  UpdateRequest $request
-     * @param  string            $id
+     * @param UpdateRequest $request
+     * @param               $id
      *
-     * @return $this|\Illuminate\Http\RedirectResponse
-     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws ValidatorException
      */
     public function update(UpdateRequest $request, $id)
     {
-        try {
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-            $this->repository->update($request->all(), $id);
-            return redirect('admin/permissions')->with('message', 'Permission updated.');
-        } catch (ValidatorException $e) {
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
-        }
+        $this->repository->update($request->all(), $id);
+        return redirect('admin/permissions')->with('message', 'Permission updated.');
     }
 
 
