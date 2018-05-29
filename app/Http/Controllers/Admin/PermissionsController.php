@@ -17,7 +17,7 @@ use App\Http\Requests\Permissions\CreateRequest;
 use App\Http\Requests\Permissions\UpdateRequest;
 
 /**
- * Class RolesController.
+ * Class PermissionsController.
  *
  * @package namespace App\Http\Controllers\Admin;
  */
@@ -30,7 +30,7 @@ class PermissionsController extends Controller
 
 
     /**
-     * RolesController constructor.
+     * PermissionsController constructor.
      *
      * @param PermissionsRepository $repository
      */
