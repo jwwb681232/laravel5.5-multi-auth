@@ -26,6 +26,22 @@
     <script src="{{ asset('resources/plugins/pace/pace.min.js') }}"></script>
     <!-- ================== END BASE JS ================== -->
 </head>
+<style>
+    body {
+        margin: 0;            /* Reset default margin */
+        overflow: hidden;
+    }
+    iframe {
+        display: block;       /* iframes are inline by default */
+        background: #fff;
+        border: none;         /* Reset default border */
+        height: 100vh;        /* Viewport-relative units */
+        width: 100vw;
+    }
+    .menu-active{
+        background-color: #2196F3;
+    }
+</style>
 <body>
 <!-- begin #page-loader -->
 <div id="page-loader">
@@ -217,37 +233,7 @@
     <!-- end #sidebar -->
 
     <!-- begin #content -->
-    <div id="content" class="content">
-        <!-- begin breadcrumb -->
-        <ol class="breadcrumb pull-right">
-            <li><a href="javascript:;">Home</a></li>
-            <li><a href="javascript:;">Page Options</a></li>
-            <li class="active">Blank Page</li>
-        </ol>
-        <!-- end breadcrumb -->
-        <!-- begin page-header -->
-        <h1 class="page-header">Blank Page <small>header small text goes here...</small></h1>
-        <!-- end page-header -->
-
-        <div class="row">
-            <div class="col-md-12">
-                <div class="panel panel-inverse">
-                    <div class="panel-heading">
-                        <div class="panel-heading-btn">
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-repeat"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
-                            <a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
-                        </div>
-                        <h4 class="panel-title">Panel Title here</h4>
-                    </div>
-                    <div class="panel-body">
-                        Panel Content Here
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <iframe id="iframe-content" src="{{url('admin/dashboard')}}" width="100%" height="100%" frameborder="0"></iframe>
     <!-- end #content -->
 
     <!-- begin theme-panel -->
@@ -345,6 +331,17 @@
 <script>
     $(document).ready(function() {
         App.init();
+        $("#iframe-content").load(function(){
+            $('[data-click=sidebar-minify]').click(function(e) {
+                var sidebarClass = 'page-sidebar-minified';
+                var targetContainer = '#page-container';
+                if ($(targetContainer).hasClass(sidebarClass)) {
+                    $("#iframe-content").contents().find("#page-container").addClass(sidebarClass);
+                } else {
+                    $("#iframe-content").contents().find("#page-container").removeClass(sidebarClass);
+                }
+            });
+        });
     });
 </script>
 </body>
