@@ -128,49 +128,25 @@ class PermissionsController extends Controller
     {
         $permission = $this->repository->find($id);
 
-        return view('permissions.edit', compact('permission'));
+        return view('admin.permissions.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  RoleUpdateRequest $request
+     * @param  UpdateRequest $request
      * @param  string            $id
      *
-     * @return Response
+     * @return $this|\Illuminate\Http\RedirectResponse
      *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
-    public function update(RoleUpdateRequest $request, $id)
+    public function update(UpdateRequest $request, $id)
     {
         try {
-
             $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
-
-            $role = $this->repository->update($request->all(), $id);
-
-            $response = [
-                'message' => 'Role updated.',
-                'data'    => $role->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
+            $this->repository->update($request->all(), $id);
+            return redirect('admin/permissions')->with('message', 'Permission updated.');
         } catch (ValidatorException $e) {
-
-            if ($request->wantsJson()) {
-
-                return response()->json(
-                    [
-                        'error'   => true,
-                        'message' => $e->getMessageBag(),
-                    ]
-                );
-            }
 
             return redirect()->back()->withErrors($e->getMessageBag())->withInput();
         }

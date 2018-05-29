@@ -495,8 +495,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="panel-body panel-form">
-                            <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/permissions') }}" method="POST">
+                            <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/permissions',$permission->id) }}" method="POST">
                                 {{ csrf_field() }}
+                                {{ method_field('patch') }}
                                 <div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
                                     <label class="control-label col-md-3 col-sm-3">Permission Name <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
@@ -509,7 +510,7 @@
                                                data-parsley-required="true"
                                                data-parsley-minlength="3"
                                                data-parsley-maxlength="200"
-                                               value="{{ old('name') }}"
+                                               value="{{ $permission->name }}"
                                         />
                                         @if($errors->has('name'))
                                             <span class="ion-close form-control-feedback"></span>
