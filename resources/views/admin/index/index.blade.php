@@ -284,6 +284,10 @@
             });
         });
     });
+
+    function iframeSrc(href) {
+        $('#iframe-content').attr('src',href);
+    }
 </script>
 </body>
 </html>

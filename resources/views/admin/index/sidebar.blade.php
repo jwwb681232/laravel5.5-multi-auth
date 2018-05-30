@@ -1,5 +1,7 @@
+<style>
+    #sidebar .nav a{cursor:pointer}
+</style>
 <div id="sidebar" class="sidebar sidebar-transparent">
-    {{--{{ print_r($menus->toArray()) }}--}}
     <!-- begin sidebar scrollbar -->
     <div data-scrollbar="true" data-height="100%">
         <!-- begin sidebar user -->
@@ -38,7 +40,8 @@
                         <span>{{ $menu->name }}</span>
                     </a>
                     @else
-                    <a href="{{ url($menu->href) }}">
+                    {{--<a href="{{ url($menu->href) }}">--}}
+                    <a onclick="iframeSrc('{{ url($menu->href) }}')">
                         <i class="{{ $menu->icon }}"></i>
                         <span>{{ $menu->name }}</span>
                     </a>
@@ -48,7 +51,7 @@
                     @if(count($menu->children) > 0)
                     <ul class="sub-menu">
                         @foreach($menu->children as $item)
-                        <li><a href="{{ url($item->href) }}">{{ $item->name }}</a></li>
+                        <li><a onclick="iframeSrc('{{ url($item->href) }}')">{{ $item->name }}</a></li>
                         @endforeach
                     </ul>
                     @endif

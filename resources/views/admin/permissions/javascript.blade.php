@@ -55,13 +55,13 @@
         $(document).on('click', '.destroy', function () {
             var _delete_id = $(this).attr('data-id');
             swal({
-                    title: "您确定要删除这条信息吗",
-                    text: "删除后将无法恢复，请谨慎操作！",
+                    title: "Are you sure you want to delete this record?",
+                    text: "It will not be restored after deletion. Please exercise caution!",
                     type: "warning",
                     showCancelButton: true,
                     confirmButtonColor: "#DD6B55",
-                    confirmButtonText: "确定",
-                    cancelButtonText: "取消",
+                    confirmButtonText: "OK",
+                    cancelButtonText: "Cancel",
                     closeOnConfirm: false
                 },
                 function () {

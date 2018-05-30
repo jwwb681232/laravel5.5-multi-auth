@@ -57,7 +57,7 @@
                                     <td>{{ $menu->sort }}</td>
                                     <td>{{ $menu->created_at }}</td>
                                     <td>{{ $menu->updated_at }}</td>
-                                    <td>{!! $menu['button'] !!}</td8
+                                    <td>{!! $menu['button'] !!}</td>
                                 </tr>
                             @endforeach
                             </tbody>
