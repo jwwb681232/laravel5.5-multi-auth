@@ -33,4 +33,13 @@ class AdminMenu extends Model implements Transformable
         return $this->hasOne(Permission::class,'id','permission_id');
     }
 
+    public function child() {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public function children()
+    {
+        return $this->child()->with('children');
+    }
+
 }

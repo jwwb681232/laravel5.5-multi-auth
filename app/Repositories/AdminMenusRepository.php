@@ -36,9 +36,9 @@ class AdminMenusRepository extends BaseRepository
 
     public function ttt()
     {
-        $menu = $this->find(1);
-        echo '<pre>';
-        print_r($menu->permission->name);
-        die;
+        $menus = AdminMenu::with(['children','permission'])->where('parent_id',0)->get();
+        /*echo '<pre>';
+        print_r($menus);
+        die;*/
     }
 }
