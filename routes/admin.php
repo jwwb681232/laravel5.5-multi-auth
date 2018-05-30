@@ -26,13 +26,23 @@ Route::group(['middleware' => 'auth:admin'],function($route){
     $route->get('test', 'TestController@index')->name('test');
     //主页
     $route->get('index', 'IndexController@index')->name('index');
+
     //仪表盘
     $route->get('dashboard', 'DashboardController@index')->name('dashboard');
-    //后台用户
+
+    //region AdminUsers 后台用户
     $route->resource('admin-users', 'AdminUsersController');
-    //角色
+    //endregion
+
+    //region Role 角色
     $route->resource('roles', 'RolesController');
+    //endregion
+
     //region Permissions 权限
     $route->resource('permissions', 'PermissionsController');
+    //endregion
+
+    //region AdminMenu 后台菜单
+    $route->resource('admin-menus', 'AdminMenusController');
     //endregion
 });

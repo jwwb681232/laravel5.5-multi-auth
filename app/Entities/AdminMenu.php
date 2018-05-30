@@ -28,4 +28,9 @@ class AdminMenu extends Model implements Transformable
      */
     protected $fillable = [];
 
+    public function permission()
+    {
+        return $this->hasOne(Permission::class,'id','permission_id');
+    }
+
 }
