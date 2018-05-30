@@ -17,6 +17,8 @@ class CreateAdminMenusTable extends Migration
             $table->increments('id');
             $table->string('name')->default('');
             $table->string('href')->default('');
+            $table->string('icon')->nullable()->default('');
+            $table->integer('permission_id')->unsigned()->default(0)->comment('permission id');
             $table->integer('parent_id')->unsigned()->default(0)->comment('parent menu id');
             $table->smallInteger('sort')->unsigned()->default(0)->comment('sort');
             $table->timestamps();
