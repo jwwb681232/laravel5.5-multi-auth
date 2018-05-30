@@ -12,7 +12,7 @@ class TestController extends Controller
     public function index()
     {
         echo '<pre>';
-        print_r(str_plural('admin user'));
+        print_r(str_plural('TestController'));
         die;
     }
 }

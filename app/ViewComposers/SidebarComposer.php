@@ -22,6 +22,6 @@ class SidebarComposer
 
     public function compose(View $view)
     {
-        $view->with('menus',$this->menus->all());
+        $view->with('menus',$this->menus->children());
     }
 }

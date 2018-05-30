@@ -34,11 +34,13 @@ class AdminMenusRepository extends BaseRepository
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function children()
+    {
+        return AdminMenu::with(['children','permission'])->where('parent_id',0)->get();
+    }
+
     public function ttt()
     {
         $menus = AdminMenu::with(['children','permission'])->where('parent_id',0)->get();
-        /*echo '<pre>';
-        print_r($menus);
-        die;*/
     }
 }

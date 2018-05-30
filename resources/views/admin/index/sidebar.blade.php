@@ -1,4 +1,5 @@
 <div id="sidebar" class="sidebar sidebar-transparent">
+    {{--{{ print_r($menus->toArray()) }}--}}
     <!-- begin sidebar scrollbar -->
     <div data-scrollbar="true" data-height="100%">
         <!-- begin sidebar user -->
@@ -27,28 +28,33 @@
         <!-- begin sidebar nav -->
         <ul class="nav">
             <li class="nav-header">Applications</li>
-            <li class="has-sub">
-                <a href="javascript:;">
-                    <b class="caret pull-right"></b>
-                    <i class="material-icons">toys</i>
-                    <span>UI Elements</span>
-                </a>
-                <ul class="sub-menu">
-                    <li><a href="ui_general.html">General</a></li>
-                    <li><a href="ui_typography.html">Typography</a></li>
-                    <li><a href="ui_tabs_accordions.html">Tabs & Accordions</a></li>
-                    <li><a href="ui_unlimited_tabs.html">Unlimited Nav Tabs</a></li>
-                    <li><a href="ui_modal_notification.html">Modal & Notification</a></li>
-                    <li><a href="ui_widget_boxes.html">Widget Boxes</a></li>
-                    <li><a href="ui_media_object.html">Media Object</a></li>
-                    <li><a href="ui_buttons.html">Buttons</a></li>
-                    <li><a href="ui_icons.html">Icons</a></li>
-                    <li><a href="ui_simple_line_icons.html">Simple Line Icons</a></li>
-                    <li><a href="ui_ionicons.html">Ionicons</a></li>
-                    <li><a href="ui_tree.html">Tree View</a></li>
-                    <li><a href="ui_language_bar_icon.html">Language Bar & Icon</a></li>
-                </ul>
-            </li>
+            @foreach($menus as $menu)
+                <li class="has-sub">
+
+                    @if(count($menu->children) > 0)
+                    <a href="javascript:void (0);">
+                        <b class="caret pull-right"></b>
+                        <i class="{{ $menu->icon }}"></i>
+                        <span>{{ $menu->name }}</span>
+                    </a>
+                    @else
+                    <a href="{{ url($menu->href) }}">
+                        <i class="{{ $menu->icon }}"></i>
+                        <span>{{ $menu->name }}</span>
+                    </a>
+                    @endif
+
+
+                    @if(count($menu->children) > 0)
+                    <ul class="sub-menu">
+                        @foreach($menu->children as $item)
+                        <li><a href="{{ url($item->href) }}">{{ $item->name }}</a></li>
+                        @endforeach
+                    </ul>
+                    @endif
+                </li>
+            @endforeach
+
             <!-- begin sidebar minify button -->
             <li><a href="javascript:;" class="sidebar-minify-btn" data-click="sidebar-minify"><i class="fa fa-angle-double-left"></i></a></li>
             <!-- end sidebar minify button -->
