@@ -20,10 +20,12 @@ Route::get('password/reset/{token}','\App\Http\Controllers\Auth\AdminResetPasswo
 //endregion
 
 Route::group(['middleware' => 'auth:admin'],function($route){
+    //主页跳转
+    $route->get('/', 'IndexController@index')->name('index');
     //测试
     $route->get('test', 'TestController@index')->name('test');
     //主页
-    $route->get('index', 'IndexController@index')->name('test');
+    $route->get('index', 'IndexController@index')->name('index');
     //仪表盘
     $route->get('dashboard', 'DashboardController@index')->name('dashboard');
     //后台用户
