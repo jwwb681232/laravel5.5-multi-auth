@@ -6,11 +6,11 @@
  * Time: 22:53
  */
 
-namespace App\Presenters;
-use App\Transformers\PermissionsTableDataTransformer;
+namespace App\Presenters\Permissions;
+use App\Transformers\Permissions\TableDataTransformer;
 use Prettus\Repository\Presenter\FractalPresenter;
 
-class PermissionsTableDataPresenter extends FractalPresenter
+class TableDataPresenter extends FractalPresenter
 {
     /**
      * Transformer
@@ -19,6 +19,6 @@ class PermissionsTableDataPresenter extends FractalPresenter
      */
     public function getTransformer()
     {
-        return new PermissionsTableDataTransformer();
+        return new TableDataTransformer();
     }
 }

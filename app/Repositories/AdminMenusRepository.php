@@ -8,6 +8,9 @@
 
 namespace App\Repositories;
 
+use App\Criteria\AdminMenus\TopMenusCriteria;
+use App\Criteria\Permissions\TopPermissionCriteria;
+use App\Criteria\Permissions\TopPermissionsCriteria;
 use App\Entities\AdminMenu;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
@@ -34,8 +37,31 @@ class AdminMenusRepository extends BaseRepository
         $this->pushCriteria(app(RequestCriteria::class));
     }
 
+    public function otherRepository(BaseRepository $repository)
+    {
+        return (new $repository($this->app));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Collection|static[]
+     */
     public function children()
     {
-        return AdminMenu::with(['children','permission'])->where('parent_id',0)->get();
+        return AdminMenu::with(['children', 'permission'])->where('parent_id', 0)->get();
+    }
+
+    /**
+     * @return array
+     */
+    public function viewDataForCreate()
+    {
+        $permissionRepository = (new PermissionsRepository($this->app));
+        $this->pushCriteria(TopMenusCriteria::class);
+        $permissionRepository->pushCriteria(TopPermissionsCriteria::class);
+
+        $topMenus       = $this->all(['id', 'name']);
+        $topPermissions = $permissionRepository->all(['id', 'name']);
+
+        return compact('topMenus', 'topPermissions');
     }
 }

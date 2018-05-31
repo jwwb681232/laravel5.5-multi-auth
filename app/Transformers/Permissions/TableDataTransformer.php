@@ -6,7 +6,7 @@
  * Time: 22:55
  */
 
-namespace App\Transformers;
+namespace App\Transformers\Permissions;
 
 use League\Fractal\TransformerAbstract;
 use App\Entities\Permission;
@@ -16,7 +16,7 @@ use App\Entities\Permission;
  *
  * @package namespace App\Transformers;
  */
-class PermissionsTableDataTransformer extends TransformerAbstract
+class TableDataTransformer extends TransformerAbstract
 {
     /**
      * Transform the Role entity.

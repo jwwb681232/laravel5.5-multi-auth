@@ -28,4 +28,13 @@ class Permission extends PermissionModel implements Transformable
      */
     protected $fillable = [];
 
+    public function child() {
+        return $this->hasMany(self::class, 'parent_id', 'id');
+    }
+
+    public function children()
+    {
+        return $this->child()->with('children');
+    }
+
 }

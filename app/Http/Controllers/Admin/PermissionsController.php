@@ -8,8 +8,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Criteria\PermissionsTableDataCriteria;
-use App\Presenters\PermissionsTableDataPresenter;
+use App\Criteria\Permissions\TableDataCriteria;
+use App\Presenters\Permissions\TableDataPresenter;
 use Illuminate\Http\Request;
 use Prettus\Validator\Exceptions\ValidatorException;
 use App\Repositories\PermissionsRepository;
@@ -50,8 +50,8 @@ class PermissionsController extends Controller
     public function index(Request $request)
     {
         if (request()->wantsJson()) {
-            $this->repository->pushCriteria(PermissionsTableDataCriteria::class);
-            $this->repository->setPresenter(PermissionsTableDataPresenter::class);
+            $this->repository->pushCriteria(TableDataCriteria::class);
+            $this->repository->setPresenter(TableDataPresenter::class);
 
             return response()->json($this->repository->search($request));
         }

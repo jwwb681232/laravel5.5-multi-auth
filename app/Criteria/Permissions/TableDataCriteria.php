@@ -5,7 +5,7 @@
  * Date: 2018/5/22
  * Time: 22:51
  */
-namespace App\Criteria;
+namespace App\Criteria\Permissions;
 
 use Prettus\Repository\Contracts\CriteriaInterface;
 use Prettus\Repository\Contracts\RepositoryInterface;
@@ -15,7 +15,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
  *
  * @package namespace App\Criteria;
  */
-class PermissionsTableDataCriteria implements CriteriaInterface
+class TableDataCriteria implements CriteriaInterface
 {
     /**
      * Apply criteria in query repository

@@ -35,6 +35,11 @@
         });
     };
 
+    var handleSelect2 = function () {
+        $("#parent_id_select").select2();
+        $("#permission_id_select").select2();
+    };
+
     var AdminMenus = function () {
         "use strict";
 
@@ -45,6 +50,7 @@
             },
             create:function(){
                 handleIcon();
+                handleSelect2();
             }
         };
     }();
