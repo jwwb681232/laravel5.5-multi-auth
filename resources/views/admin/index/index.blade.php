@@ -73,7 +73,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a href="index.html" class="navbar-brand">
-                    Color Admin Material
+                    {{ config('app.name') }}
                 </a>
             </div>
             <!-- end mobile sidebar expand / collapse button -->

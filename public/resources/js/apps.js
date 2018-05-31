@@ -414,10 +414,10 @@ var handleThemePageStructureControl = function() {
             $('.theme-list [data-theme]').closest('li').removeClass('active');
             $('.theme-list [data-theme="'+ $.cookie('theme') +'"]').closest('li').addClass('active');
         }
-        var cssFileSrc = 'assets/css/theme/' + $.cookie('theme') + '.css';
+        var cssFileSrc = 'resources/css/theme/' + $.cookie('theme') + '.css';
         $('#theme').attr('href', cssFileSrc);
     }
-    
+
     // COOKIE - Sidebar Styling Setting
     if ($.cookie && $.cookie('sidebar-styling')) {
         if ($('.sidebar').length !== 0 && $.cookie('sidebar-styling') == 'grid') {
@@ -425,7 +425,7 @@ var handleThemePageStructureControl = function() {
             $('[name=sidebar-styling] option[value="2"]').prop('selected', true);
         }
     }
-    
+
     // COOKIE - Header Setting
     if ($.cookie && $.cookie('header-styling')) {
         if ($('.header').length !== 0 && $.cookie('header-styling') == 'navbar-inverse') {
@@ -433,7 +433,7 @@ var handleThemePageStructureControl = function() {
             $('[name=header-styling] option[value="2"]').prop('selected', true);
         }
     }
-    
+
     // COOKIE - Gradient Setting
     if ($.cookie && $.cookie('content-gradient')) {
         if ($('#page-container').length !== 0 && $.cookie('content-gradient') == 'enabled') {
@@ -441,7 +441,7 @@ var handleThemePageStructureControl = function() {
             $('[name=content-gradient] option[value="2"]').prop('selected', true);
         }
     }
-    
+
     // COOKIE - Content Styling Setting
     if ($.cookie && $.cookie('content-styling')) {
         if ($('body').length !== 0 && $.cookie('content-styling') == 'black') {
@@ -449,10 +449,10 @@ var handleThemePageStructureControl = function() {
             $('[name=content-styling] option[value="2"]').prop('selected', true);
         }
     }
-    
+
     // THEME - theme selection
     $('.theme-list [data-theme]').click(function() {
-        var cssFileSrc = 'assets/css/theme/' + $(this).attr('data-theme') + '.css';
+        var cssFileSrc = 'resources/css/theme/' + $(this).attr('data-theme') + '.css';
         $('#theme').attr('href', cssFileSrc);
         $('.theme-list [data-theme]').not(this).closest('li').removeClass('active');
         $(this).closest('li').addClass('active');
