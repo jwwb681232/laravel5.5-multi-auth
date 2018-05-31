@@ -13,7 +13,7 @@ use Prettus\Repository\Contracts\RepositoryInterface;
 /**
  * Class RoleCriteria.
  *
- * @package namespace App\Criteria;
+ * @package namespace App\Criteria\AdminMenus;
  */
 class TopMenusCriteria implements CriteriaInterface
 {
