@@ -22,6 +22,19 @@
         });
     };
 
+    var handleIcon = function(){
+        $('#icon').change(function(){
+            var icon = $(this).val();
+            var iconNode = $(this).prev().children('i');
+            if(!icon){
+                iconNode.attr('class','fa fa-frown-o');
+            }else{
+                iconNode.attr('class',icon);
+            }
+            //$(this).prev().children('i').attr('class',$(this).val())
+        });
+    };
+
     var AdminMenus = function () {
         "use strict";
 
@@ -29,6 +42,9 @@
             index: function () {
                 handleGritterMessage();
                 handleMenuTreeTable();
+            },
+            create:function(){
+                handleIcon();
             }
         };
     }();

@@ -32,6 +32,12 @@
                         <h4 class="panel-title">Panel Title here</h4>
                     </div>
                     <div class="panel-body">
+                        <div id="toolbar" class="btn-group">
+                            <a type="button" href="{{ url('admin/admin-menus/create') }}" class="btn btn-success">
+                                <i class="fa fa-plus"> </i> 新增
+                            </a>
+                        </div>
+                        <br><br>
                         <table class="table table-bordered table-hover" id="menu">
                             <thead>
                             <tr>

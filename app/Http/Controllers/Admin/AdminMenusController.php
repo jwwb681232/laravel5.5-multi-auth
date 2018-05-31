@@ -25,4 +25,9 @@ class AdminMenusController extends Controller
 
         return view('admin.admin-menus.index', compact('menus'));
     }
+
+    public function create()
+    {
+        return view('admin.admin-menus.create');
+    }
 }
