@@ -21,7 +21,6 @@ class AdminMenusController extends Controller
 
     public function index()
     {
-        $this->repository->ttt();
         $menus = $this->repository->with('permission')->all();
 
         return view('admin.admin-menus.index', compact('menus'));

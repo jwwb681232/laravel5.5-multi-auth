@@ -38,9 +38,4 @@ class AdminMenusRepository extends BaseRepository
     {
         return AdminMenu::with(['children','permission'])->where('parent_id',0)->get();
     }
-
-    public function ttt()
-    {
-        $menus = AdminMenu::with(['children','permission'])->where('parent_id',0)->get();
-    }
 }
