@@ -26,7 +26,7 @@ class AdminMenu extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = [];
+    protected $fillable = ['name', 'href', 'icon', 'permission_id', 'parent_id', 'sort',];
 
     public function permission()
     {

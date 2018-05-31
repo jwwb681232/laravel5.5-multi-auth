@@ -33,6 +33,15 @@
                     </div>
                     <div class="panel-body">
                         <div class="panel-body panel-form">
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/admin-menus') }}" method="POST">
                                 {{ csrf_field() }}
                                 <div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
@@ -100,7 +109,7 @@
                                 <div class="form-group @if($errors->has('parent_id')) has-error has-feedback @endif">
                                     <label class="control-label col-md-3 col-sm-3">Parent Menu <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
-                                        <select class="form-control" id="parent_id_select">
+                                        <select name="parent_id" class="form-control" id="parent_id_select">
                                             <option value="0">Top Menu</option>
                                             @foreach($topMenus as $menu)
                                                 <option value="{{ $menu->id }}">{{ $menu->name }}</option>
@@ -108,6 +117,7 @@
                                         </select>
                                         @if($errors->has('parent_id'))
                                             <span class="ion-close form-control-feedback"></span>
+                                            <ul class="parsley-errors-list filled"><li class="parsley-required">{{ $errors->first('parent_id') }}</li></ul>
                                         @endif
                                     </div>
                                 </div>
@@ -134,7 +144,7 @@
                                 <div class="form-group @if($errors->has('permission_id')) has-error has-feedback @endif">
                                     <label class="control-label col-md-3 col-sm-3">Permission <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
-                                        <select class="form-control" id="permission_id_select">
+                                        <select class="form-control" id="permission_id_select" name="permission_id">
                                             @foreach($topPermissions as $permission)
                                                 <option value="{{ $permission->id }}">{{ $permission->name }}</option>
                                             @endforeach

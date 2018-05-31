@@ -2,6 +2,7 @@
 
 @section('page-css-plugins')
     <link href="{{ asset('resources/plugins/treeTable/vsStyle/jquery.treeTable.css') }}" rel="stylesheet">
+    <link href="{{ asset('resources/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -41,15 +42,15 @@
                         <table class="table table-bordered table-hover" id="menu">
                             <thead>
                             <tr>
-                                <th style="width: 5%">Id</th>
-                                <th style="width: 11.8%">Menu Title</th>
-                                <th style="width: 11.8%">Link</th>
-                                <th style="width: 11.8%">Permission name</th>
-                                <th style="width: 11.8%">Icon</th>
-                                <th style="width: 11.8%">Sort</th>
-                                <th style="width: 11.8%">Created At</th>
-                                <th style="width: 11.8%">Updated At</th>
-                                <th style="width: 11.8%">Action</th>
+                                <th>Id</th>
+                                <th>Menu Title</th>
+                                <th>Link</th>
+                                <th>Permission name</th>
+                                <th>Icon</th>
+                                <th>Sort</th>
+                                <th>Created At</th>
+                                <th>Updated At</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -77,6 +78,7 @@
 
 @section('page-js-plugins')
     <script src="{{ asset('resources/plugins/treeTable/jquery.treeTable.js') }}"></script>
+    <script src="{{ asset('resources/plugins/gritter/js/jquery.gritter.js') }}"></script>
 @endsection
 
 @section('page-js')

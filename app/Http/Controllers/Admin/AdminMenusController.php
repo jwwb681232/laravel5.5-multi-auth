@@ -8,11 +8,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Criteria\AdminMenus\TopMenusCriteria;
-use App\Criteria\Permissions\TopPermissionsCriteria;
+use App\Http\Requests\AdminMenus\CreateRequest;
 use App\Repositories\AdminMenusRepository;
-use App\Repositories\PermissionsRepository;
-use Illuminate\Container\Container as App;
+
 class AdminMenusController extends Controller
 {
     protected $repository;
@@ -38,5 +36,17 @@ class AdminMenusController extends Controller
     public function create()
     {
         return view('admin.admin-menus.create', $this->repository->viewDataForCreate());
+    }
+
+    /**
+     * @param CreateRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(CreateRequest $request)
+    {
+        $this->repository->create($request->all());
+
+        return redirect('admin/admin-menus')->with('message', 'Admin menu created.');
     }
 }
