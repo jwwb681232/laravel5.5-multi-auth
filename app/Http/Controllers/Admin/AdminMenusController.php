@@ -51,4 +51,15 @@ class AdminMenusController extends Controller
 
         return redirect('admin/admin-menus')->with('message', 'Admin menu created.');
     }
+
+    /**
+     * @param $id
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
+     */
+    public function edit($id)
+    {
+        return view('admin.admin-menus.edit', $this->repository->viewDataForCreate());
+    }
 }
