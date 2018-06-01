@@ -25,9 +25,10 @@ class AdminMenusController extends Controller
      */
     public function index()
     {
-        $menus = $this->repository->with('permission')->viewDataForIndex();
-
-        return view('admin.admin-menus.index', compact('menus'));
+        return view(
+            'admin.admin-menus.index',
+            ['menus'=>$this->repository->with('permission')->viewDataForIndex()]
+        );
     }
 
     /**
@@ -36,7 +37,10 @@ class AdminMenusController extends Controller
      */
     public function create()
     {
-        return view('admin.admin-menus.create', $this->repository->viewDataForSave());
+        return view(
+            'admin.admin-menus.create',
+            $this->repository->viewDataForSave()
+        );
     }
 
     /**
@@ -60,6 +64,9 @@ class AdminMenusController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.admin-menus.edit', $this->repository->viewDataForSave($id));
+        return view(
+            'admin.admin-menus.edit',
+            $this->repository->viewDataForSave($id)
+        );
     }
 }
