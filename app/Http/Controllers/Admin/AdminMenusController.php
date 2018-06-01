@@ -9,6 +9,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\AdminMenus\CreateRequest;
+use App\Http\Requests\AdminMenus\UpdateRequest;
 use App\Repositories\AdminMenusRepository;
 
 class AdminMenusController extends Controller
@@ -68,5 +69,33 @@ class AdminMenusController extends Controller
             'admin.admin-menus.edit',
             $this->repository->viewDataForSave($id)
         );
+    }
+
+
+    /**
+     * @param UpdateRequest $request
+     * @param               $id
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function update(UpdateRequest $request, $id)
+    {
+        $this->repository->update($request->all(), $id);
+        return redirect('admin/admin-menus')->with('message', 'Admin menu updated.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int $id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $this->repository->delete($id);
+
+        return redirect()->back()->with('message', 'Admin menu deleted.');
     }
 }

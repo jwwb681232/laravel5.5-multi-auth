@@ -64,9 +64,8 @@ class AdminMenusRepository extends BaseRepository
 
         $topMenus       = $this->all(['id', 'name']);
         $topPermissions = $permissionRepository->all(['id', 'name']);
-
         if ($id){
-            $menu = $this->find($id);
+            $menu = $this->skipCriteria()->find($id);
         }
 
         return compact('topMenus', 'topPermissions','menu');
@@ -84,7 +83,7 @@ class AdminMenusRepository extends BaseRepository
         }
         foreach ($menus as $key =>$item) {
             $button['edit'] = "<a href='".url('admin/admin-menus')."/{$item->id}/edit' class='btn btn-indigo btn-xs'><i class='fa fa-trash'> Edit</i></a>";
-            $button['delete'] = "<a href='javascript:;' data-id='{$item->id}' class='btn btn-danger btn-xs destroy'><i class='fa fa-trash'> Delete</i><form action='".url('admin/admin-menus')."/{$item->id}' method='POST' name='delete_item_{$item->id}' style='display:none'>".method_field('DELETE').csrf_token()."</form></a>";
+            $button['delete'] = "<a href='javascript:;' data-id='{$item->id}' class='btn btn-danger btn-xs destroy'><i class='fa fa-trash'> Delete</i><form action='".url('admin/admin-menus')."/{$item->id}' method='POST' name='delete_item_{$item->id}' style='display:none'>".method_field('DELETE').csrf_field()."</form></a>";
             $menus[$key]->button = implode(' ',$button);
         }
 

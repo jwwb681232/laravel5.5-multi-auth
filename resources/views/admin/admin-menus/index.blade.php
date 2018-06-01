@@ -3,6 +3,7 @@
 @section('page-css-plugins')
     <link href="{{ asset('resources/plugins/treeTable/vsStyle/jquery.treeTable.css') }}" rel="stylesheet">
     <link href="{{ asset('resources/plugins/gritter/css/jquery.gritter.css') }}" rel="stylesheet" />
+    <link href="{{ asset('resources/plugins/sweetalert/sweetalert.css') }}" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -79,6 +80,7 @@
 @section('page-js-plugins')
     <script src="{{ asset('resources/plugins/treeTable/jquery.treeTable.js') }}"></script>
     <script src="{{ asset('resources/plugins/gritter/js/jquery.gritter.js') }}"></script>
+    <script src="{{ asset('resources/plugins/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
 
 @section('page-js')

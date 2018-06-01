@@ -42,8 +42,9 @@
                                     </ul>
                                 </div>
                             @endif
-                            <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/admin-menus') }}" method="POST">
+                            <form class="form-horizontal form-bordered" data-parsley-validate action="{{ url('admin/admin-menus',$menu->id) }}" method="POST">
                                 {{ csrf_field() }}
+                                {{ method_field('patch') }}
                                 <div class="form-group @if($errors->has('name')) has-error has-feedback @endif">
                                     <label class="control-label col-md-3 col-sm-3">Menu Name <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
@@ -57,7 +58,7 @@
                                                data-parsley-required="true"
                                                data-parsley-minlength="3"
                                                data-parsley-maxlength="200"
-                                               value="{{ old('name') }}"
+                                               value="{{ $menu->name }}"
                                         />
                                         @if($errors->has('name'))
                                             <span class="ion-close form-control-feedback"></span>
@@ -77,7 +78,7 @@
                                                data-parsley-required="true"
                                                data-parsley-minlength="3"
                                                data-parsley-maxlength="200"
-                                               value="{{ old('href') }}"
+                                               value="{{ $menu->href }}"
                                         />
                                         @if($errors->has('name'))
                                             <span class="ion-close form-control-feedback"></span>
@@ -88,7 +89,7 @@
                                     <label class="control-label col-md-3 col-sm-3">Menu Icon :</label>
                                     <div class="col-md-7 col-sm-7">
                                         <div class="input-group">
-                                            <span class="input-group-addon"><i class="fa fa-frown-o"></i></span>
+                                            <span class="input-group-addon"><i class="{{ $menu->icon ? $menu->icon : 'fa fa-frown-o' }}"></i></span>
                                             <input class="form-control"
                                                    @if($errors->has('icon'))data-toggle="tooltip" data-placement="top" data-original-title="{{ $errors->first('icon') }}" @endif
                                                    type="text"
@@ -98,7 +99,7 @@
                                                    placeholder="Enter Menu Icon"
                                                    data-parsley-minlength="3"
                                                    data-parsley-maxlength="200"
-                                                   value="{{ old('icon') }}"
+                                                   value="{{ $menu->icon }}"
                                             />
                                         </div>
                                         @if($errors->has('icon'))
@@ -110,9 +111,9 @@
                                     <label class="control-label col-md-3 col-sm-3">Parent Menu <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
                                         <select name="parent_id" class="form-control" id="parent_id_select">
-                                            <option value="0">Top Menu</option>
-                                            @foreach($topMenus as $menu)
-                                                <option value="{{ $menu->id }}">{{ $menu->name }}</option>
+                                            <option value="0" @if($menu->parent_id == 0) selected @endif>Top Menu</option>
+                                            @foreach($topMenus as $item)
+                                                <option value="{{ $item->id }}" @if($menu->parent_id == $item->id) selected @endif>{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('parent_id'))
@@ -134,7 +135,7 @@
                                                data-parsley-required="true"
                                                data-parsley-min="0"
                                                data-parsley-max="65535"
-                                               value="{{ old('sort') }}"
+                                               value="{{ $menu->sort }}"
                                         />
                                         @if($errors->has('sort'))
                                             <span class="ion-close form-control-feedback"></span>
@@ -146,7 +147,7 @@
                                     <div class="col-md-7 col-sm-7">
                                         <select class="form-control" id="permission_id_select" name="permission_id">
                                             @foreach($topPermissions as $permission)
-                                                <option value="{{ $permission->id }}">{{ $permission->name }}</option>
+                                                <option value="{{ $permission->id }}" @if(isset($menu->permission->id) && $menu->permission->id == $permission->id) selected @endif>{{ $permission->name }}</option>
                                             @endforeach
                                         </select>
                                         @if($errors->has('permission_id'))
@@ -178,7 +179,7 @@
     @include('admin.admin-menus.javascript')
     <script>
         $(document).ready(function() {
-            AdminMenus.create()
+            AdminMenus.edit()
         });
     </script>
 
