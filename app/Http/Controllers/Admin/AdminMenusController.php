@@ -26,6 +26,7 @@ class AdminMenusController extends Controller
      */
     public function index()
     {
+        //todo fix bug 子目录修改所属父目录后主页表格显示顺序混乱
         return view(
             'admin.admin-menus.index',
             ['menus'=>$this->repository->with('permission')->viewDataForIndex()]
