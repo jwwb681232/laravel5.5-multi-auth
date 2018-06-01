@@ -25,13 +25,14 @@ class AdminMenusController extends Controller
      */
     public function index()
     {
-        $menus = $this->repository->with('permission')->all();
+        $menus = $this->repository->with('permission')->viewDataForIndex();
 
         return view('admin.admin-menus.index', compact('menus'));
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function create()
     {

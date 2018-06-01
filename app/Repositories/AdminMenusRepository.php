@@ -52,6 +52,7 @@ class AdminMenusRepository extends BaseRepository
 
     /**
      * @return array
+     * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
     public function viewDataForCreate()
     {
@@ -63,5 +64,24 @@ class AdminMenusRepository extends BaseRepository
         $topPermissions = $permissionRepository->all(['id', 'name']);
 
         return compact('topMenus', 'topPermissions');
+    }
+
+    /**
+     *  主页数据增加按钮
+     * @return mixed|object
+     */
+    public function viewDataForIndex()
+    {
+        $menus = $this->all();
+        if ( ! $menus) {
+            return (object)[];
+        }
+        foreach ($menus as $key =>$item) {
+            $button['edit'] = "<a href='".url('admin/admin-menus')."/{$item->id}/edit' class='btn btn-indigo btn-xs'><i class='fa fa-trash'> Edit</i></a>";
+            $button['delete'] = "<a href='javascript:;' data-id='{$item->id}' class='btn btn-danger btn-xs destroy'><i class='fa fa-trash'> Delete</i><form action='".url('admin/admin-menus')."/{$item->id}' method='POST' name='delete_item_{$item->id}' style='display:none'>".method_field('DELETE').csrf_token()."</form></a>";
+            $menus[$key]->button = implode(' ',$button);
+        }
+
+        return $menus;
     }
 }
