@@ -12,6 +12,7 @@ use App\Criteria\AdminMenus\TopMenusCriteria;
 use App\Criteria\Permissions\TopPermissionCriteria;
 use App\Criteria\Permissions\TopPermissionsCriteria;
 use App\Entities\AdminMenu;
+use Prettus\Repository\Contracts\RepositoryInterface;
 use Prettus\Repository\Eloquent\BaseRepository;
 use Prettus\Repository\Criteria\RequestCriteria;
 
@@ -51,10 +52,11 @@ class AdminMenusRepository extends BaseRepository
     }
 
     /**
+     * @param int $id
      * @return array
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function viewDataForSave()
+    public function viewDataForSave(int $id = 0)
     {
         $permissionRepository = (new PermissionsRepository($this->app));
         $this->pushCriteria(TopMenusCriteria::class);
@@ -63,7 +65,11 @@ class AdminMenusRepository extends BaseRepository
         $topMenus       = $this->all(['id', 'name']);
         $topPermissions = $permissionRepository->all(['id', 'name']);
 
-        return compact('topMenus', 'topPermissions');
+        if ($id){
+            $menu = $this->find($id);
+        }
+
+        return compact('topMenus', 'topPermissions','menu');
     }
 
     /**
