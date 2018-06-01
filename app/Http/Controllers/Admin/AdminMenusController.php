@@ -42,6 +42,7 @@ class AdminMenusController extends Controller
      * @param CreateRequest $request
      *
      * @return \Illuminate\Http\RedirectResponse
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
      */
     public function store(CreateRequest $request)
     {
