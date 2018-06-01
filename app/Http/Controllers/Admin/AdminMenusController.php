@@ -36,7 +36,7 @@ class AdminMenusController extends Controller
      */
     public function create()
     {
-        return view('admin.admin-menus.create', $this->repository->viewDataForCreate());
+        return view('admin.admin-menus.create', $this->repository->viewDataForSave());
     }
 
     /**
@@ -60,6 +60,6 @@ class AdminMenusController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.admin-menus.edit', $this->repository->viewDataForCreate());
+        return view('admin.admin-menus.edit', $this->repository->viewDataForSave());
     }
 }

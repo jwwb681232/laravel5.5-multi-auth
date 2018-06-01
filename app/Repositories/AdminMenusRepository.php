@@ -54,7 +54,7 @@ class AdminMenusRepository extends BaseRepository
      * @return array
      * @throws \Prettus\Repository\Exceptions\RepositoryException
      */
-    public function viewDataForCreate()
+    public function viewDataForSave()
     {
         $permissionRepository = (new PermissionsRepository($this->app));
         $this->pushCriteria(TopMenusCriteria::class);
