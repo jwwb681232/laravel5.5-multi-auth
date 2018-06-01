@@ -40,7 +40,7 @@
 <!-- end #page-loader -->
 
 <!-- begin #page-container -->
-<div id="page-container" class="fade page-sidebar-fixed page-with-wide-sidebar" style="padding-top: 50px">
+<div id="page-container" class="fade page-sidebar-fixed page-with-wide-sidebar" {{--style="padding-top: 50px"--}}>
 
     <!-- begin #content -->
     @yield('content')
