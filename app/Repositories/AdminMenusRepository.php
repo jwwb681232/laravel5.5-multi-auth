@@ -93,6 +93,13 @@ class AdminMenusRepository extends BaseRepository
         return $newMenus;
     }
 
+    /**
+     * 排序
+     * @param array     $data   需要循环的数组
+     * @param int       $id     获取id为$id下的子分类，0为所有分类
+     * @param array     $arr    将获取到的数据暂时存储的数组中，方便数据返回
+     * @return array
+     */
     protected function sortList($data, $id = 0, &$arr = null)
     {
         foreach ($data as $v) {
