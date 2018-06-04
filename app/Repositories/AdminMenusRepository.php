@@ -81,12 +81,26 @@ class AdminMenusRepository extends BaseRepository
         if ( ! $menus) {
             return (object)[];
         }
-        foreach ($menus as $key =>$item) {
+        $res = $this->sortList($menus);
+        $newMenus = [];
+        foreach ($res as $key =>$item) {
+            $newMenus[] = $item;
             $button['edit'] = "<a href='".url('admin/admin-menus')."/{$item->id}/edit' class='btn btn-indigo btn-xs'><i class='fa fa-trash'> Edit</i></a>";
             $button['delete'] = "<a href='javascript:;' data-id='{$item->id}' class='btn btn-danger btn-xs destroy'><i class='fa fa-trash'> Delete</i><form action='".url('admin/admin-menus')."/{$item->id}' method='POST' name='delete_item_{$item->id}' style='display:none'>".method_field('DELETE').csrf_field()."</form></a>";
-            $menus[$key]->button = implode(' ',$button);
+            $newMenus[$key]->button = implode(' ',$button);
         }
 
-        return $menus;
+        return $newMenus;
+    }
+
+    protected function sortList($data, $id = 0, &$arr = null)
+    {
+        foreach ($data as $v) {
+            if ($id == $v->parent_id) {
+                $arr[] = $v;
+                $this->sortList($data, $v->id, $arr);
+            }
+        }
+        return $arr;
     }
 }
