@@ -72,7 +72,7 @@ class AdminMenusRepository extends BaseRepository
     }
 
     /**
-     *  主页数据增加按钮
+     *  主页数据按钮
      * @return mixed|object
      */
     public function viewDataForIndex()
