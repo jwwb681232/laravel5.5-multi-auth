@@ -82,7 +82,7 @@ class AdminMenusController extends Controller
     public function update(UpdateRequest $request, $id)
     {
         $this->repository->update($request->all(), $id);
-        return redirect('admin/admin-menus')->with('message', 'Admin menu updated.');
+        return redirect('admin/admin-menus');
     }
 
     /**
