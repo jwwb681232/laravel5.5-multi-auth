@@ -146,6 +146,7 @@
                                     <label class="control-label col-md-3 col-sm-3">Permission <span style="color: red;font-weight: 600">*</span> :</label>
                                     <div class="col-md-7 col-sm-7">
                                         <select class="form-control" id="permission_id_select" name="permission_id">
+                                            <option value="0" @if($menu->permission_id == 0) selected @endif>Null</option>
                                             @foreach($topPermissions as $permission)
                                                 <option value="{{ $permission->id }}" @if(isset($menu->permission->id) && $menu->permission->id == $permission->id) selected @endif>{{ $permission->name }}</option>
                                             @endforeach
