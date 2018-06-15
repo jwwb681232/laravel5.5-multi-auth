@@ -2,6 +2,7 @@
 
 @section('page-css-plugins')
     <link href="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet"/>
+    <link href="{{ asset('resources/plugins/bootstrap-table/dist/extensions/page-jumpto/bootstrap-table-jumpto.css') }}" rel="stylesheet"/>
 @endsection
 
 @section('content')
@@ -56,6 +57,7 @@
 
 @section('page-js-plugins')
     <script src="{{ asset('resources/plugins/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+    <script src="{{ asset('resources/plugins/bootstrap-table/dist/extensions/page-jumpto/bootstrap-table-jumpto.min.js') }}"></script>
     <script src="{{ asset('resources/plugins/bootstrap-table/dist/extensions/export/bootstrap-table-export.min.js') }}"></script>
     <script src="{{ asset('resources/plugins/table-export/tableExport.min.js') }}"></script>
 @endsection

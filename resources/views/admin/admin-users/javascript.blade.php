@@ -17,6 +17,7 @@
             toolbar: '#toolbar',//指定工具栏
             striped: true, //是否显示行间隔色
             sortable:true,
+            showJumpto:true,
             dataField: "data",//bootstrap table 可以前端分页也可以后端分页，这里
             pageNumber: 1, //初始化加载第一页，默认第一页
             pagination: true,//是否分页
